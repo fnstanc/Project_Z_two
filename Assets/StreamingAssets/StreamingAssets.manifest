@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 1290834971
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: player_1008611.assetbundle
+      Dependencies: {}
+    Info_1:
+      Name: canvas.assetbundle
+      Dependencies: {}
+    Info_2:
+      Name: loadcanvas.assetbundle
+      Dependencies: {}
+    Info_3:
+      Name: mainmeunui.assetbundle
+      Dependencies: {}

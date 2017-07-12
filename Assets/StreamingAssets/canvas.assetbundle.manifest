@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 3447938446
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7ee77733c7301df7a6cc4b1addf3b8d9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: d86ce97843b9c0f015a19270d31d7841
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/UI/Canvas.prefab
+Dependencies: []
