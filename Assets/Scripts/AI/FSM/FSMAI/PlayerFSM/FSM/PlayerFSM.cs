@@ -16,5 +16,6 @@ public class PlayerFSM : FSM
         this.dictStates.Add(StateType.run, new PlayerRunState(this.agent, StateType.run));
         this.dictStates.Add(StateType.spawn, new PlayerSpawnState(this.agent, StateType.spawn));
         this.dictStates.Add(StateType.yasuoRSkill, new PlayerYaSuoRState(this.agent, StateType.yasuoRSkill));
+        this.dictStates.Add(StateType.dodge, new PlayerDodgeState(this.agent, StateType.dodge));
     }
 }

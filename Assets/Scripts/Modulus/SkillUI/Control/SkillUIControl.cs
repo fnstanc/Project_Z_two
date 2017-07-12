@@ -74,6 +74,8 @@ public class SkillUIControl : BaseControl
                 info.skillAudioId = data.audioId;
                 info.skillAudioTime = data.audioTime;
                 info.skillType = (SkillType)data.skillType;
+                info.fsmStateType = (StateType)data.fsmState;
+                info.skillModeType = (SkillModeType)data.skillModeType;
                 info.skillBulletId = data.skillBulletId;
                 info.skillAtkTime = data.skillAtkTime;
                 dictSkillData.Add(info.skillID, info);

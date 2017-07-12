@@ -8,16 +8,14 @@ public class NormalEffect : BaseEffect
     public double lifeTime;
     private bool isSetInfo = false;
 
-    private void Update()
+    public override void onUpdate()
     {
         if (!isSetInfo || lifeTime < 0)
             return;
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0)
         {
-            PoolMgr.Instance.saveObj(this.gameObject, this.info.config.tempId + this.info.config.path);
-            lifeTime = orgTime;
-            isSetInfo = false;
+            onDispose();
         }
     }
 
@@ -41,6 +39,12 @@ public class NormalEffect : BaseEffect
         isSetInfo = true;
     }
 
+    public override void onDispose()
+    {
+        PoolMgr.Instance.saveObj(this.gameObject, this.info.config.tempId + this.info.config.path);
+        lifeTime = orgTime;
+        isSetInfo = false;
+    }
 
 }
 

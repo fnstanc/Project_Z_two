@@ -136,6 +136,16 @@ public enum SkillType
 {
     normal = 1,
     bullet = 2,
+    dodge = 3,
+}
+
+
+public enum SkillModeType
+{
+    baseSkill = 1,
+    normalSkill,
+    triggerSkill,
+    dodgeSkill,
 }
 
 public class Defines

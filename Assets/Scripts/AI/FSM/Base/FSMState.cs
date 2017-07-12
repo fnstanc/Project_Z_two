@@ -7,14 +7,14 @@ public enum StateType
     none = -1,
     idle,
     run,
-    attack,
     onHit,
     die,
     spawn,
     skill,
+    dodge,//闪避
 
     //ExtendState
-    yasuoRSkill,
+    yasuoRSkill = 100,
 }
 
 //状态基类

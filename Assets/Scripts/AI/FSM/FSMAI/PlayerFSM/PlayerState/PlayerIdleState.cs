@@ -22,7 +22,7 @@ public class PlayerIdleState : FSMState
         base.onEnter();
         if (dyAgent != null)
         {
-            dyAgent.anim.CrossFade("idle", 0.1f);
+            dyAgent.anim.CrossFade("idle", 0.1f);            
             dyAgent.anim.wrapMode = WrapMode.Loop;
         }
     }

@@ -18,4 +18,7 @@ public class SkillItemUIData : BaseData
     public SkillType skillType;
     public int skillBulletId;
     public double skillAtkTime;
+
+    public StateType fsmStateType;
+    public SkillModeType skillModeType;
 }

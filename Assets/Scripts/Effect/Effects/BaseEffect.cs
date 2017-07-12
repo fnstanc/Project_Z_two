@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseEffect : MonoBehaviour
 {
+    public int id;
     protected EffectInfo info;
     private GameObject cacheObj;
     protected GameObject CacheObj
@@ -43,5 +44,21 @@ public class BaseEffect : MonoBehaviour
     {
 
     }
+
+    private void Update()
+    {
+        onUpdate();
+    }
+
+    public virtual void onUpdate()
+    {
+
+    }
+
+    public virtual void onDispose()
+    {
+
+    }
+
 }
 

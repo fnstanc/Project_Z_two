@@ -44,9 +44,10 @@ public class WordBubbleWidget : MonoBehaviour
     private Queue<string> wordQueue = new Queue<string>();
     private bool isRun = false;
 
-    public void setWord(string text)
+    public void setWord(string text, bool isNotRunShow)
     {
-        wordQueue.Enqueue(text);
+        if (!isNotRunShow || (isNotRunShow && !isRun))
+            wordQueue.Enqueue(text);
         runWord();
     }
 
@@ -103,7 +104,6 @@ public class WordBubbleWidget : MonoBehaviour
             });
         });
     }
-
 
     //对准摄像机
     void Update()

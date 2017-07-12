@@ -92,12 +92,16 @@ public class EntityDynamicActor : BaseEntity, ISkill
 
     public virtual void onReleaseSkill(int skillId, FSMArgs args = null)
     {
-        bool canChangeState = isCanChangeState(StateType.skill);
-        //bool canCastSkill = MySkill.releaseSkill(skillId,canChangeState);    
+        StateType stateType = StateType.die;
+        if (args != null && args.skillData != null)
+        {
+            stateType = args.skillData.fsmStateType;
+        }
+        bool canChangeState = isCanChangeState(stateType);
         //Debug.Log("释放技能 id == " + skillId + "   canCastSkill : " + canCastSkill + "  canChangeState : " + canChangeState);
         if (MySkill.releaseSkill(skillId, canChangeState) && canChangeState)
         {
-            onChangeState(StateType.skill, args);
+            onChangeState(stateType, args);
             Message msg = new Message(MsgCmd.On_Skill_Release_Success, this);
             msg["skillId"] = skillId;
             msg.Send();
@@ -105,7 +109,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
 
     }
     //说话接口
-    public void sayWord(string str)
+    public void sayWord(string str, bool isNotRunShow = false)
     {
         if (WBW == null)
         {
@@ -122,12 +126,12 @@ public class EntityDynamicActor : BaseEntity, ISkill
                 {
                     WBW = go.AddComponent<WordBubbleWidget>();
                 }
-                WBW.setWord(str);
+                WBW.setWord(str, isNotRunShow);
             });
         }
         else
         {
-            WBW.setWord(str);
+            WBW.setWord(str, isNotRunShow);
         }
     }
 

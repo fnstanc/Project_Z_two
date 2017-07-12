@@ -8,6 +8,7 @@ public enum EffectType
     none = 0,
     normal,
     pickUp,
+    shadow,
 }
 
 public class EffectInfo
@@ -50,11 +51,13 @@ public class EffectInfo
 public class EffectMgr : Singleton<EffectMgr>
 {
     private Dictionary<int, EffectConfigData> dictEff = null;
-
+    private Dictionary<int, BaseEffect> createdEff = null;
+    private int count = 1;
     public override void init()
     {
         base.init();
         dictEff = new Dictionary<int, EffectConfigData>();
+        createdEff = new Dictionary<int, BaseEffect>();
         List<EffectConfigData> lst = GameData.EffectConfig;
         for (int i = 0; i < lst.Count; i++)
         {
@@ -68,7 +71,7 @@ public class EffectMgr : Singleton<EffectMgr>
         createEffect(effId, null);
     }
 
-    public void createEffect(int effId, EffectInfo info)
+    public int createEffect(int effId, EffectInfo info)
     {
         if (dictEff.ContainsKey(effId))
         {
@@ -81,16 +84,32 @@ public class EffectMgr : Singleton<EffectMgr>
                   {
                       GameObject go = obj as GameObject;
                       BaseEffect be = go.AddComponent(getType((EffectType)config.effectType)) as BaseEffect;
+                      be.id = count;
                       be.setInfo(info);
+                      count++;
+                      if (!createdEff.ContainsKey(count))
+                          createdEff.Add(count, be);
                   });
             }
             else
             {
                 BaseEffect be = cacheGo.GetComponent<BaseEffect>();
                 if (be != null)
+                {
                     be.setInfo(info);
-                cacheGo.SetActive(true);
+                    cacheGo.SetActive(true);
+                    count = be.id;
+                }
             }
+        }
+        return count;
+    }
+
+    public void disposeEffect(int id)
+    {
+        if (createdEff.ContainsKey(id))
+        {
+            createdEff[id].onDispose();
         }
     }
 
@@ -105,6 +124,9 @@ public class EffectMgr : Singleton<EffectMgr>
                 break;
             case EffectType.pickUp:
                 t = typeof(PickUpEffect);
+                break;
+            case EffectType.shadow:
+                t = typeof(AfterImageEffects);
                 break;
         }
         return t;
