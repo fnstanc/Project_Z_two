@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerOnHitState : FSMState
 {
     private EntityDynamicActor dyAgent;
+    private EntityDynamicActor dyCaster;//攻击方
 
-    private float orgHeight;
-    private float airHieght = 1.2f;
+    private Vector3 orgPos;
+    private AttackType atkType = AttackType.normal;
+    private float hitDis = 0;
+    private Vector3 moveDir = Vector3.zero;
     private string animName;
     private float exitTime;
 
@@ -21,12 +24,27 @@ public class PlayerOnHitState : FSMState
         base.onEnter();
         if (dyAgent != null)
         {
-            orgHeight = dyAgent.CacheTrans.position.y;
+            orgPos = dyAgent.CacheTrans.position;
             animName = this.getHitAnimName();
             this.exitTime = dyAgent.anim[this.animName].length + Time.timeSinceLevelLoad;
             dyAgent.anim.CrossFade(this.animName, 0.1f);
             dyAgent.anim.wrapMode = WrapMode.Once;
-            dyAgent.setUseGrivaty(false);
+        }
+        if (this.args != null && this.args.damageData != null)
+        {
+            hitDis = this.args.damageData.hitDis;
+            atkType = this.args.damageData.atkType;
+            if (atkType == AttackType.hitAir)
+            {
+                dyAgent.setUseGrivaty(false);
+                hitDis += orgPos.y;
+                moveDir = Vector3.up;
+            }
+            if (atkType == AttackType.hitBack)
+            {
+                dyCaster = EntityMgr.Instance.getEntityById(this.args.damageData.casterId) as EntityDynamicActor;
+                moveDir = dyCaster.CacheTrans.forward;
+            }
         }
     }
 
@@ -47,7 +65,7 @@ public class PlayerOnHitState : FSMState
     public override void onExit()
     {
         base.onExit();
-
+        this.dyAgent.setUseGrivaty(true);
     }
 
     private string getHitAnimName()
@@ -57,9 +75,19 @@ public class PlayerOnHitState : FSMState
 
     private void doHit()
     {
-        orgHeight = dyAgent.CacheTrans.position.y;
-        if (orgHeight < airHieght)
-            dyAgent.CacheTrans.Translate(Vector3.up * 0.1f);
+        if (this.atkType == AttackType.normal)
+            return;
+        if (this.atkType == AttackType.hitAir)
+        {
+            if (dyAgent.CacheTrans.position.y < hitDis)
+                dyAgent.CacheTrans.Translate(moveDir * 0.1f);
+        }
+        if (this.atkType == AttackType.hitBack)
+        {
+            if ((orgPos - dyAgent.CacheTrans.position).magnitude < hitDis)
+                dyAgent.CacheTrans.Translate(moveDir, Space.World);
+        }
+
     }
 }
 

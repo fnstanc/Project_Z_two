@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public abstract class BaseControl
 {
     public UIEnum uiEnum;
@@ -14,6 +12,5 @@ public abstract class BaseControl
     {
         UIMgr.Instance.openUI(this.uiEnum, data);
     }
-
 }
 

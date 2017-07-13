@@ -8,7 +8,7 @@ public abstract class BaseUI : MonoBehaviour
 {
     public UIEnum uiEnum { get; set; }
     public UINode uiNode { get; set; }
-    protected Transform cacheTrans;
+    private Transform cacheTrans;
     public Transform CacheTrans
     {
         get
@@ -20,7 +20,7 @@ public abstract class BaseUI : MonoBehaviour
             return this.cacheTrans;
         }
     }
-    protected GameObject cacheObj;
+    private GameObject cacheObj;
     public GameObject CacheObj
     {
         get
@@ -32,7 +32,7 @@ public abstract class BaseUI : MonoBehaviour
             return this.cacheObj;
         }
     }
-    protected RectTransform cacheRect;
+    private RectTransform cacheRect;
     public RectTransform CacheRect
     {
         get
@@ -45,6 +45,7 @@ public abstract class BaseUI : MonoBehaviour
         }
     }
     protected BaseData data = null;
+    protected BaseUI parentUI = null;
     protected bool isInit = false;
 
     public abstract void resetUIInfo();
@@ -93,7 +94,7 @@ public abstract class BaseUI : MonoBehaviour
     }
     public virtual void setActive(bool b)
     {
-        this.cacheObj.SetActive(b);
+        this.CacheObj.SetActive(b);
     }
     //处理UI刷新问题
     public virtual void refreshUI()
@@ -127,6 +128,11 @@ public abstract class BaseUI : MonoBehaviour
     public virtual void onDeActive()
     {
 
+    }
+
+    public void setParentUI(BaseUI ui)
+    {
+        this.parentUI = ui;
     }
 
 }

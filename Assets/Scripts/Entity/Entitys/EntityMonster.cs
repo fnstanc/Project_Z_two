@@ -30,9 +30,9 @@ public class EntityMonster : EntityDynamicActor
             treeAI.root.onTick(dt);
     }
 
-    public override void onDamage(float damage)
+    public override void onDamage(DamageData dt)
     {
-        this.HP -= damage;
+        this.HP -= dt.damage;
         if (this.HP <= 0)
         {
             onChangeState(StateType.die);
@@ -55,7 +55,7 @@ public class EntityMonster : EntityDynamicActor
         }
         else
         {
-            onChangeState(StateType.onHit);
+            onChangeState(StateType.onHit, new FSMArgs(dt));
         }
     }
 

@@ -212,9 +212,9 @@ public class EntityMainPlayer : EntityDynamicActor
         this.BillBoard.setColorByType(PartType.namePart, Color.green);
     }
 
-    public override void onDamage(float damage)
+    public override void onDamage(DamageData dt)
     {
-        this.HP -= damage;
+        this.HP -= dt.damage;
         sendHPMsg();
         UIMgr.Instance.onDamageColor();
     }

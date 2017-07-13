@@ -31,16 +31,16 @@ public class EntityCrystal : EntityStaticActor
     {
         onChangeColor();
         //进入水晶 水晶生命值减少     
-        onDamage(entity.HP * 0.1f);
+        //onDamage(entity.HP * 0.1f);
         //进入水晶 销毁实体
         EntityMgr.Instance.removeEntity(entity);
         sendHpMsg();
     }
 
-    public override void onDamage(float damage)
+    public override void onDamage(DamageData dt)
     {
-        base.onDamage(damage);
-        this.HP -= damage;
+        base.onDamage(dt);
+        this.HP -= dt.damage;
         if (this.HP <= 0)
         {
             EntityMgr.Instance.removeEntity(this);

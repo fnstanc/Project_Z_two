@@ -150,6 +150,7 @@
     <Compile Include="Assets\Scripts\Entity\Base\EntityDynamicActor.cs" />
     <Compile Include="Assets\Scripts\Entity\Base\EntityStaticActor.cs" />
     <Compile Include="Assets\Scripts\Entity\BlackBoard\BlackBoard.cs" />
+    <Compile Include="Assets\Scripts\Entity\DamageData\DamageData.cs" />
     <Compile Include="Assets\Scripts\Entity\EntityMgr\EntityMgr.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityCrystal.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMainPlayer.cs" />
@@ -169,6 +170,11 @@
     <Compile Include="Assets\Scripts\Mgr\ResMgr\SpriteMgr.cs" />
     <Compile Include="Assets\Scripts\Mgr\TimeMgr\TimeMgr.cs" />
     <Compile Include="Assets\Scripts\Modulus\DDOLCanvas.cs" />
+    <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Control\FuncMenuControl.cs" />
+    <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Data\FuncMenuData.cs" />
+    <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Data\FuncMenuItemData.cs" />
+    <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\UI\FuncMenuItemUI.cs" />
+    <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\UI\FuncMenuUI.cs" />
     <Compile Include="Assets\Scripts\Modulus\JoyStickUI\Control\JoyStickControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\JoyStickUI\UI\JoyStickUI.cs" />
     <Compile Include="Assets\Scripts\Modulus\KnapsackUI\Control\KnapsackControl.cs" />
@@ -186,6 +192,11 @@
     <Compile Include="Assets\Scripts\Modulus\MianPlayer\Data\MainPlayerUIData.cs" />
     <Compile Include="Assets\Scripts\Modulus\MianPlayer\Data\MoveData.cs" />
     <Compile Include="Assets\Scripts\Modulus\MianPlayer\UI\MainPlayerUI.cs" />
+    <Compile Include="Assets\Scripts\Modulus\SkillDetailUI\Control\SkillDetailControl.cs" />
+    <Compile Include="Assets\Scripts\Modulus\SkillDetailUI\Data\SkillDetailData.cs" />
+    <Compile Include="Assets\Scripts\Modulus\SkillDetailUI\Data\SkillDetailItemData.cs" />
+    <Compile Include="Assets\Scripts\Modulus\SkillDetailUI\UI\SkillDetailItemUI.cs" />
+    <Compile Include="Assets\Scripts\Modulus\SkillDetailUI\UI\SkillDetailUI.cs" />
     <Compile Include="Assets\Scripts\Modulus\SkillUI\Control\SkillUIControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\SkillUI\Data\SkillItemUIData.cs" />
     <Compile Include="Assets\Scripts\Modulus\SkillUI\Data\SkillUIData.cs" />
@@ -196,6 +207,7 @@
     <Compile Include="Assets\Scripts\Modulus\UIBase\BaseUI\BaseUI.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\BaseUI\UIEventTrigger.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\Mgr\UIMgr.cs" />
+    <Compile Include="Assets\Scripts\Modulus\UIBase\UIUtils\UIUtils.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\Z_Server\ServerTest.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Control\WeaponSystemControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Data\WeaponSysItemData.cs" />
@@ -223,7 +235,6 @@
     <Compile Include="Assets\Scripts\Weapon\Base\BaseBullet.cs" />
     <Compile Include="Assets\Scripts\Weapon\Base\BaseWeapon.cs" />
     <Compile Include="Assets\Scripts\Weapon\Base\BulletFactroy.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Bullets\BulletArrow.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullets\BulletNormal.cs" />
     <Compile Include="Assets\Scripts\Weapon\Factory\WeaponFactory.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapons\Bow\WeaponArrow.cs" />

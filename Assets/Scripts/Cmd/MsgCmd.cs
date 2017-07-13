@@ -63,6 +63,12 @@ public class MsgCmd
     //JoyStickUI
     public const string Open_JoyStick_UI = "Open_JoyStick_UI";
 
+    //FuncMenuUI
+    public const string Open_FuncMenu_UI = "Open_FuncMenu_UI";
+
+    //SkillDetailUI
+    public const string Open_SkillDetail_UI = "Open_SkillDetail_UI";
+
     #endregion
 }
 

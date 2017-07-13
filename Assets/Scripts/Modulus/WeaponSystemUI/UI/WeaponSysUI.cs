@@ -20,10 +20,10 @@ public class WeaponSysUI : BaseUI
     public override void onStart()
     {
         base.onStart();
-        slot = this.cacheTrans.Find("itemContent/weaponSlot").gameObject;
-        money = this.cacheTrans.Find("propertyContent/money/moneyText").GetComponent<Text>();
-        score = this.cacheTrans.Find("propertyContent/score/scoreText").GetComponent<Text>();
-        energy = this.cacheTrans.Find("propertyContent/energy/energyText").GetComponent<Text>();
+        slot = this.CacheTrans.Find("itemContent/weaponSlot").gameObject;
+        money = this.CacheTrans.Find("propertyContent/money/moneyText").GetComponent<Text>();
+        score = this.CacheTrans.Find("propertyContent/score/scoreText").GetComponent<Text>();
+        energy = this.CacheTrans.Find("propertyContent/energy/energyText").GetComponent<Text>();
         slot.SetActive(false);
         dictItem = new Dictionary<int, WeaponSysItem>();
         MessageCenter.Instance.addListener(MsgCmd.On_BB_Change_Value, onPropertyChanage);

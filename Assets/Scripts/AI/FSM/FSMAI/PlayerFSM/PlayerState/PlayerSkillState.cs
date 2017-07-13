@@ -83,10 +83,10 @@ public class PlayerSkillState : FSMState
         switch (type)
         {
             case SkillType.normal:
-                this.nextAttackTime = 100 + Time.timeSinceLevelLoad;//随便写的 配置表还没配
+                this.nextAttackTime = (float)this.args.skillData.skillAtkTime + Time.timeSinceLevelLoad;
                 break;
             case SkillType.bullet:
-                this.nextAttackTime = 0.5f + Time.timeSinceLevelLoad;
+                this.nextAttackTime = (float)this.args.skillData.skillAtkTime + Time.timeSinceLevelLoad;
                 break;
         }
     }
@@ -96,10 +96,30 @@ public class PlayerSkillState : FSMState
         SkillType type = this.args.skillData.skillType;
         switch (type)
         {
-            case SkillType.normal:
+            case SkillType.normal://普通技能 距离 水平角度  垂直角度 //AOI管理实体视野周围的所有实体 方便获取一定范围内的实体 这里直接拿所有实体
+                List<BaseEntity> targetLst = EntityMgr.Instance.getEntityByType(EntityType.monster);
+                AttackInfo info = new AttackInfo(this.args.skillData.atkRange, this.args.skillData.horAngle, this.args.skillData.verAngle);
+                if (targetLst != null && targetLst.Count > 0)
+                {
+                    for (int i = 0; i < targetLst.Count; i++)
+                    {
+                        bool isAttacked = AttackHelper.isAttacked(this.dyAgent, targetLst[i], info);
+                        if (isAttacked)
+                        {
+                            DamageData dt = new DamageData();
+                            dt.casterId = this.dyAgent.UID;
+                            dt.targetId = targetLst[i].UID;
+                            dt.atkType = this.args.skillData.atkType;
+                            dt.hitDis = this.args.skillData.hitDis;
+                            dt.damage = this.args.skillData.skillDamage;
 
+                            targetLst[i].onDamage(dt);
+                        }
+                    }
+                }
+                this.nextAttackTime = -1;
                 break;
-            case SkillType.bullet:
+            case SkillType.bullet://子弹技能 由子弹碰撞做伤害检测
                 BulletFactroy.createBullet(this.dyAgent, this.args.skillData.skillBulletId);
                 this.nextAttackTime = -1;
                 break;

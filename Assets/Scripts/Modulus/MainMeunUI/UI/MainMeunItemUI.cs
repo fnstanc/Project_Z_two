@@ -14,8 +14,8 @@ public class MainMeunItemUI : BaseUI
 
     public override void onStart()
     {
-        levelName = this.cacheTrans.Find("LevelText").GetComponent<Text>();
-        UIEventTrigger listener = this.cacheObj.AddComponent<UIEventTrigger>();
+        levelName = this.CacheTrans.Find("LevelText").GetComponent<Text>();
+        UIEventTrigger listener = this.CacheObj.AddComponent<UIEventTrigger>();
         listener.setClickHandler(onloadScene);
     }
 

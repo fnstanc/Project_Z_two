@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BaseBullet : MonoBehaviour
 {
-    protected BaseEntity agent;
-    protected WeaponInfo info;
-
     protected BulletInfo bulletInfo;
     protected bool isInit = false;
 
@@ -66,11 +63,6 @@ public class BaseBullet : MonoBehaviour
 
     }
 
-    public void setAgent(BaseEntity agent, WeaponInfo info)
-    {
-        this.agent = agent;
-        this.info = info;
-    }
 
     public void setBulletInfo(BulletInfo info)
     {

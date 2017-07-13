@@ -18,9 +18,9 @@ public class WeaponSysItem : BaseUI
     public override void onStart()
     {
         base.onStart();
-        weaponName = this.cacheTrans.Find("weaponBtn/weaponName").GetComponent<Text>();
-        weaponCost = this.cacheTrans.Find("weaponCost").GetComponent<Text>();
-        UIEventTrigger listener = this.cacheObj.AddComponent<UIEventTrigger>();
+        weaponName = this.CacheTrans.Find("weaponBtn/weaponName").GetComponent<Text>();
+        weaponCost = this.CacheTrans.Find("weaponCost").GetComponent<Text>();
+        UIEventTrigger listener = this.CacheObj.AddComponent<UIEventTrigger>();
         listener.setClickHandler(onBtnClick);
         listener.setEnterHandler(onBtnEnter);
         listener.setExitHandler(onBtnExit);
@@ -41,7 +41,7 @@ public class WeaponSysItem : BaseUI
         WeaponSysItemData dt = this.data as WeaponSysItemData;
         if (dt != null)
         {
-            dt.TipsPos = this.cacheTrans.position;
+            dt.TipsPos = this.CacheTrans.position;
         }
         UIMgr.Instance.openUI(UIEnum.weaponSysTips, this.data);
     }
@@ -64,8 +64,8 @@ public class WeaponSysItem : BaseUI
                 ResMgr.Instance.load(path, (obj) =>
                 {
                     weapon = obj as GameObject;
-                    weapon.transform.SetParent(this.cacheTrans);
-                    weapon.transform.position = new Vector3(this.cacheTrans.position.x, this.cacheTrans.position.y - 1.5f, this.cacheTrans.position.z);
+                    weapon.transform.SetParent(this.CacheTrans);
+                    weapon.transform.position = new Vector3(this.CacheTrans.position.x, this.CacheTrans.position.y - 1.5f, this.CacheTrans.position.z);
                     weapon.transform.localScale = dt.Scale;
                     weapon.transform.localEulerAngles = new Vector3(0, 0, 0);
                 });

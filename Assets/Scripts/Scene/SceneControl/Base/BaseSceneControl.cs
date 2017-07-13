@@ -40,6 +40,8 @@ public class BaseSceneControl : MonoBehaviour
             msg2.Send();
             Message msg3 = new Message(MsgCmd.Open_JoyStick_UI, this);
             msg3.Send();
+            Message msg4 = new Message(MsgCmd.Open_FuncMenu_UI, this);
+            msg4.Send();
         });
     }
     //创建水晶

@@ -34,6 +34,8 @@ public enum UIEnum
     skillUI,
     mainPlayerUI,
     joyStickUI,
+    funcMenuUI,
+    skillDetailUI,
 }
 //UI加载路径 对应枚举
 public class UIPath
@@ -62,11 +64,19 @@ public class UIPath
             case UIEnum.joyStickUI:
                 path = "UI/JoyStickUI";
                 break;
+            case UIEnum.funcMenuUI:
+                path = "UI/FuncMenuUI";
+                break;
+            case UIEnum.knapsack:
+                path = "UI/KanpsackUI";
+                break;
+            case UIEnum.skillDetailUI:
+                path = "UI/SkillDetailUI";
+                break;
             default:
                 Debug.Log("<color=red>没有这个UI枚举</color>");
                 break;
         }
-
         return path;
     }
     //UI绑定脚本 对应枚举
@@ -92,6 +102,15 @@ public class UIPath
                 break;
             case UIEnum.joyStickUI:
                 t = typeof(JoyStickUI);
+                break;
+            case UIEnum.funcMenuUI:
+                t = typeof(FuncMenuUI);
+                break;
+            case UIEnum.knapsack:
+                t = typeof(KnapsackUI);
+                break;
+            case UIEnum.skillDetailUI:
+                t = typeof(SkillDetailUI);
                 break;
             default:
                 Debug.Log("<color=red>没有这个UI枚举绑定脚本</color>");
@@ -134,19 +153,27 @@ public enum WeaponType
 
 public enum SkillType
 {
-    normal = 1,
-    bullet = 2,
-    dodge = 3,
+    normal = 1,//普通技能
+    bullet = 2,//子弹技能
+    dodge = 3,//闪避技能
 }
 
-
+//UI显示做区分
 public enum SkillModeType
 {
-    baseSkill = 1,
-    normalSkill,
-    triggerSkill,
-    dodgeSkill,
+    baseSkill = 1,//基础技能
+    normalSkill,//普通技能
+    triggerSkill,//触发技能
+    dodgeSkill,//闪避技能
 }
+
+public enum AttackType
+{
+    normal = 1,//普通攻击
+    hitBack,//击退攻击
+    hitAir,//浮空攻击
+}
+
 
 public class Defines
 {

@@ -38,7 +38,7 @@ public abstract class FSMState
 
     public virtual void onEnter()
     {
-        Debug.Log("<color=yellow>进入状态 -> </color>" + this.SType.ToString());
+        Debug.Log(this.agent.UID + "<color=yellow>   进入状态 ->  </color>" + this.SType.ToString());
     }
 
     public virtual void onUpdate()
@@ -49,7 +49,7 @@ public abstract class FSMState
 
     public virtual void onExit()
     {
-        Debug.Log("<color=red>退出状态 -> </color>" + this.SType.ToString());
+        Debug.Log(this.agent.UID + "<color=red>   退出状态 ->  </color>" + this.SType.ToString());
     }
 
     public virtual void setArgs(FSMArgs args)

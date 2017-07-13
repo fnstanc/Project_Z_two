@@ -37,7 +37,14 @@ public class BulletNormal : BaseBullet
         EntityDynamicActor atkTarget = col.GetComponent<EntityDynamicActor>();
         if (atkTarget != null && atkTarget.UID != this.bulletInfo.dyAgent.UID)
         {
-            atkTarget.onDamage(11);
+            DamageData dt = new DamageData();
+            dt.casterId = this.bulletInfo.dyAgent.UID;
+            dt.targetId = atkTarget.UID;
+            dt.atkType = (AttackType)this.bulletInfo.atkType;
+            dt.hitDis = this.bulletInfo.hitDis;
+            dt.damage = 10;//配表
+            atkTarget.onDamage(dt);
+
             this.bulletInfo.dyAgent.Target = atkTarget;
             this.bulletInfo.dyAgent.onChangeState(StateType.yasuoRSkill);
         }

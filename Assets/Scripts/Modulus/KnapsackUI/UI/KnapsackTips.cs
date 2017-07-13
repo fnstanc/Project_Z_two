@@ -16,7 +16,7 @@ public class KnapsackTips : BaseUI
     public override void onStart()
     {
         base.onStart();
-        Name = this.cacheTrans.Find("itemName").GetComponent<Text>();
+        Name = this.CacheTrans.Find("itemName").GetComponent<Text>();
     }
 
     public override void refreshUI()
@@ -26,7 +26,7 @@ public class KnapsackTips : BaseUI
         if (dt != null)
         {
             Name.text = dt.Name;
-            this.cacheTrans.position = dt.Pos;
+            this.CacheTrans.position = dt.Pos;
         }
     }
 

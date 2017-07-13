@@ -143,7 +143,8 @@ public class BaseEntity : MonoBehaviour
     {
         return true;
     }
-    public virtual void onDamage(float damage)
+
+    public virtual void onDamage(DamageData dt)
     {
 
     }

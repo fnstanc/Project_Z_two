@@ -7,6 +7,8 @@ public class AppMain : MonoBehaviour
     private void Awake()
     {
         init();
+        //初始化所有监听
+
     }
 
 

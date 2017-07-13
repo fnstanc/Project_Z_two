@@ -44,8 +44,6 @@ public class WeaponBow : BaseWeapon
         go.transform.rotation = this.transform.rotation;
         go.AddComponent<BoxCollider>();
         go.AddComponent<Rigidbody>().AddForce(this.transform.forward * pullDis * -600);
-        BulletArrow arrow = go.AddComponent<BulletArrow>();
-        arrow.setAgent(this.agent, this.info);
         bowString.localPosition = new Vector3(0, -1.4f, 0);
     }
 

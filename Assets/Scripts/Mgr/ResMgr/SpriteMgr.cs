@@ -21,7 +21,12 @@ public class SpriteMgr : Singleton<SpriteMgr>
         else
         {
             sp = ResMgr.Instance.loadResByType<Sprite>("Textures/" + name);
-            dictSp.Add(sp.name, sp);
+            if (sp == null)
+            {
+                sp = ResMgr.Instance.loadResByType<Sprite>("Textures/uiDefault");
+            }
+            if (!dictSp.ContainsKey(sp.name))
+                dictSp.Add(sp.name, sp);
         }
         return sp;
     }

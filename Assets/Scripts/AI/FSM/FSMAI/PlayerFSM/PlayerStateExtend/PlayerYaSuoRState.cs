@@ -37,6 +37,7 @@ public class PlayerYaSuoRState : FSMState
         if (!isArrive)
         {
             moveDir = (dyAgent.Target.CacheTrans.position - dyAgent.CacheTrans.position);
+            dyAgent.CacheTrans.Translate(moveDir.normalized * 0.5f,Space.World);
             if (moveDir.magnitude <= 2f)
             {
                 exitTime = Time.timeSinceLevelLoad + 1f;
@@ -44,8 +45,7 @@ public class PlayerYaSuoRState : FSMState
                 EffectMgr.Instance.createEffect(10001, new EffectInfo(new Vector3(0, 1.2f, 0), this.dyAgent.CacheTrans));
                 AudioMgr.Instance.playAudioAtPoint(10007, dyAgent.CacheTrans.position);
                 isArrive = true;
-            }
-            dyAgent.CacheTrans.Translate(moveDir.normalized * 0.5f);
+            }    
         }
         if (isArrive && Time.timeSinceLevelLoad >= exitTime)
         {

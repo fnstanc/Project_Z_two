@@ -220,6 +220,10 @@ public class ResMgr : Singleton<ResMgr>
     {
         Type t = typeof(T);
         T res = Resources.Load(path, t) as T;
+        if (res == null)
+        {
+            Debug.Log("加载资源失败 请检查路径或资源是否存在 path :" + path);
+        }
         return res;
     }
     public void loadResByType<T>(string path, Action<T> loaded) where T : class

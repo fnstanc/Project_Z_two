@@ -7,10 +7,8 @@ public class AttackInfo
 {
     public int skillId;
     public float atkRange;
-    public int isHorTest;
-    public float horAngle;
-    public int isVerTest;
-    public float verAngle;
+    public int horAngle;
+    public int verAngle;
 
     public AttackInfo()
     {
@@ -19,17 +17,13 @@ public class AttackInfo
     public AttackInfo(float range)
     {
         this.atkRange = range;
-        this.isHorTest = 0;
-        this.horAngle = 0;
-        this.isVerTest = 0;
-        this.verAngle = 0;
+        this.horAngle = -1;
+        this.verAngle = -1;
     }
-    public AttackInfo(float range, int ishor, float hor, int isver, float ver)
+    public AttackInfo(float range, int hor, int ver)
     {
         this.atkRange = range;
-        this.isHorTest = ishor;
         this.horAngle = hor;
-        this.isVerTest = isver;
         this.verAngle = ver;
     }
 }
@@ -56,7 +50,7 @@ public class AttackHelper
         //攻击角度检测(水平检测 垂直检测)
         Vector3 sourceForward = source.TransformDirection(Vector3.forward);
         //水平检测
-        if (info.isHorTest == Defines.isTest)
+        if (info.verAngle != -1)
         {
             Vector3 tar = target.position;
             tar.y = source.position.y;
@@ -69,7 +63,7 @@ public class AttackHelper
             }
         }
         //垂直检测
-        if (info.isVerTest == Defines.isTest)
+        if (info.verAngle != -1)
         {
             float height = Mathf.Abs(target.position.y - source.position.y);
             float sinAng = height / len;

@@ -19,12 +19,12 @@ public class KnapsackItem : BaseUI
     public override void onStart()
     {
         base.onStart();
-        frame = this.cacheTrans.Find("frame").GetComponent<Image>();
-        icon = this.cacheTrans.Find("icon").GetComponent<Image>();
-        count = this.cacheTrans.Find("count").GetComponent<Text>();
-        type = this.cacheTrans.Find("type").GetComponent<Text>();
-        sonType = this.cacheTrans.Find("sonType").GetComponent<Text>();
-        UIEventTrigger listener = this.cacheObj.AddComponent<UIEventTrigger>();
+        frame = this.CacheTrans.Find("frame").GetComponent<Image>();
+        icon = this.CacheTrans.Find("icon").GetComponent<Image>();
+        count = this.CacheTrans.Find("count").GetComponent<Text>();
+        type = this.CacheTrans.Find("type").GetComponent<Text>();
+        sonType = this.CacheTrans.Find("sonType").GetComponent<Text>();
+        UIEventTrigger listener = this.CacheObj.AddComponent<UIEventTrigger>();
         listener.setEnterHandler(onRayEnter);
         listener.setClickHandler(onRayClick);
         listener.setExitHandler(onRayExit);
@@ -47,7 +47,7 @@ public class KnapsackItem : BaseUI
         KnapsackItemData dt = this.data as KnapsackItemData;
         if (dt != null)
         {
-            dt.Pos = this.cacheTrans.position;
+            dt.Pos = this.CacheTrans.position;
         }
         UIMgr.Instance.openUI(UIEnum.knapsackTips, this.data);
     }

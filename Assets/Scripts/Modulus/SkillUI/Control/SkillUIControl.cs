@@ -76,8 +76,14 @@ public class SkillUIControl : BaseControl
                 info.skillType = (SkillType)data.skillType;
                 info.fsmStateType = (StateType)data.fsmState;
                 info.skillModeType = (SkillModeType)data.skillModeType;
+                info.atkType = (AttackType)data.atkType;
+                info.hitDis = (float)data.atkDistance;
                 info.skillBulletId = data.skillBulletId;
                 info.skillAtkTime = data.skillAtkTime;
+                info.atkRange = (float)data.atkRange;
+                info.horAngle = data.horAngle;
+                info.verAngle = data.verAngle;
+
                 dictSkillData.Add(info.skillID, info);
             }
         }

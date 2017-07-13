@@ -33,6 +33,9 @@ public class DDOLObj : MonoBehaviour
         controls.Add(new SkillUIControl());
         controls.Add(new MainPlayerControl());
         controls.Add(new JoyStickControl());
+        controls.Add(new FuncMenuControl());
+        controls.Add(new KnapsackControl());
+        controls.Add(new SkillDetailControl());
         initControl();
     }
 

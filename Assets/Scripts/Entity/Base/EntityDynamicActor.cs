@@ -41,6 +41,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
         {
             CC.height = this.info.NameHeight;
             CC.center = new Vector3(0, this.info.NameHeight / 2, 0);
+            CC.radius = 0.3f;//配置表没配
         }
     }
 

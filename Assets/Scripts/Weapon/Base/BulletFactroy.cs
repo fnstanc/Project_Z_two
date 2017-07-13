@@ -36,6 +36,7 @@ public class BulletInfo
     public float bulletSpeed;
     public ATK_Type atkType;
     public BulletType bulletType;
+    public float hitDis;
 }
 
 public class BulletFactroy
@@ -49,6 +50,7 @@ public class BulletFactroy
         info.bulletSpeed = (float)dt.bulletSpeed;
         info.atkType = (ATK_Type)dt.atkType;
         info.bulletType = (BulletType)dt.bulletType;
+        info.hitDis = (float)dt.atkDistance;
         string[] strs = dt.bulletSize.Split(',');
         info.boxSize = new Vector3(float.Parse(strs[0]), float.Parse(strs[0]), float.Parse(strs[0]));
         GameObject go = new GameObject(info.dyAgent.Name + " --> bullet");
