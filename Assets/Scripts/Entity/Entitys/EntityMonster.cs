@@ -33,24 +33,27 @@ public class EntityMonster : EntityDynamicActor
     public override void onDamage(DamageData dt)
     {
         this.HP -= dt.damage;
+        Message msg = new Message(MsgCmd.On_Take_Damage, this);
+        msg["data"] = dt;
+        msg.Send();
         if (this.HP <= 0)
         {
-            onChangeState(StateType.die);
-            Message msg = new Message(MsgCmd.On_Change_Value, this);
-            msg["type"] = BType.money;
-            msg["val"] = 10 * (int)this.SonType;
-            msg.Send();
-            Message msg2 = new Message(MsgCmd.On_Change_Value, this);
-            msg2["type"] = BType.score;
-            msg2["val"] = 10 * (int)this.SonType;
-            msg2.Send();
-            Message msg3 = new Message(MsgCmd.On_Change_Value, this);
-            msg3["type"] = BType.energy;
-            msg3["val"] = 100 * (int)this.SonType;
-            msg3.Send();
-            BaseEntity agent = EntityMgr.Instance.getEntityById(1008611);
-            EffectInfo info = new EffectInfo(this.CacheTrans.position, agent);
-            EffectMgr.Instance.createEffect(20001, info);
+            //onChangeState(StateType.die);
+            //Message msg = new Message(MsgCmd.On_Change_Value, this);
+            //msg["type"] = BType.money;
+            //msg["val"] = 10 * (int)this.SonType;
+            //msg.Send();
+            //Message msg2 = new Message(MsgCmd.On_Change_Value, this);
+            //msg2["type"] = BType.score;
+            //msg2["val"] = 10 * (int)this.SonType;
+            //msg2.Send();
+            //Message msg3 = new Message(MsgCmd.On_Change_Value, this);
+            //msg3["type"] = BType.energy;
+            //msg3["val"] = 100 * (int)this.SonType;
+            //msg3.Send();
+            //BaseEntity agent = EntityMgr.Instance.getEntityById(1008611);
+            //EffectInfo info = new EffectInfo(this.CacheTrans.position, agent);
+            //EffectMgr.Instance.createEffect(20001, info);
             clear();
         }
         else

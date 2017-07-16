@@ -69,6 +69,9 @@ public class MsgCmd
     //SkillDetailUI
     public const string Open_SkillDetail_UI = "Open_SkillDetail_UI";
 
+    //DamageTipsUI
+    public const string On_Take_Damage = "On_Take_Damage";
+
     #endregion
 }
 

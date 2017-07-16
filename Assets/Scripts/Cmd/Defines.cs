@@ -36,6 +36,7 @@ public enum UIEnum
     joyStickUI,
     funcMenuUI,
     skillDetailUI,
+    damageTipsUI,
 }
 //UI加载路径 对应枚举
 public class UIPath
@@ -72,6 +73,9 @@ public class UIPath
                 break;
             case UIEnum.skillDetailUI:
                 path = "UI/SkillDetailUI";
+                break;
+            case UIEnum.damageTipsUI:
+                path = "UI/DamageTipsUI";
                 break;
             default:
                 Debug.Log("<color=red>没有这个UI枚举</color>");
@@ -111,6 +115,9 @@ public class UIPath
                 break;
             case UIEnum.skillDetailUI:
                 t = typeof(SkillDetailUI);
+                break;
+            case UIEnum.damageTipsUI:
+                t = typeof(DamageTipsUI);
                 break;
             default:
                 Debug.Log("<color=red>没有这个UI枚举绑定脚本</color>");

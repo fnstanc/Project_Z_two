@@ -36,6 +36,7 @@ public class DDOLObj : MonoBehaviour
         controls.Add(new FuncMenuControl());
         controls.Add(new KnapsackControl());
         controls.Add(new SkillDetailControl());
+        controls.Add(new DamageTipsControl());
         initControl();
     }
 
@@ -44,10 +45,12 @@ public class DDOLObj : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            SceneMgr.Instance.onLoadScene("CrossFire2", null, (progress) =>
-            {
-                DDOLCanvas.Instance.setFill(progress);
-            }, true);
+            DamageData dt = new DamageData();
+            dt.damage = UnityEngine.Random.Range(1, 100);
+            dt.targetId = 1008611;
+            Message msg = new Message(MsgCmd.On_Take_Damage, this);
+            msg["data"] = dt;
+            msg.Send();
         }
     }
 

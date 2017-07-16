@@ -17,6 +17,11 @@ public class UIUtils
         item.SetActive(true);
         return item;
     }
+    //获取屏幕高度
+    public static float getScreenHeight()
+    {
+        return Screen.height;
+    }
 
 }
 

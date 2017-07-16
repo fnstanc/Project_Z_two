@@ -12,5 +12,11 @@ public abstract class BaseControl
     {
         UIMgr.Instance.openUI(this.uiEnum, data);
     }
+
+    public virtual bool isOpen()
+    {
+        return UIMgr.Instance.isOpen(this.uiEnum);
+    }
+
 }
 

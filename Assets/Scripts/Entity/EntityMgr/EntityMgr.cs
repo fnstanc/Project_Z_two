@@ -183,6 +183,15 @@ public class EntityMgr : Singleton<EntityMgr>
     {
         return getEntityById(1008611);
     }
+    //是否是猪脚
+    public bool isMainPlayer(BaseEntity entity)
+    {
+        return entity.UID == getMainPlayer().UID;
+    }
+    public bool isMainPlayer(int uid)
+    {
+        return uid == getMainPlayer().UID;
+    }
 
     //加载静态数据
     private void loadStaticData()

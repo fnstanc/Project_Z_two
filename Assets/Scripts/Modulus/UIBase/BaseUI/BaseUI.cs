@@ -112,7 +112,7 @@ public abstract class BaseUI : MonoBehaviour
 
     }
 
-    //
+    //启用
     void OnEnable()
     {
         onActive();
@@ -121,6 +121,7 @@ public abstract class BaseUI : MonoBehaviour
     {
 
     }
+    //禁用
     void OnDisable()
     {
         onDeActive();
@@ -129,11 +130,17 @@ public abstract class BaseUI : MonoBehaviour
     {
 
     }
-
+    //parentUI
     public void setParentUI(BaseUI ui)
     {
         this.parentUI = ui;
     }
+    //closeSelf
+    protected void closeSelfUI()
+    {
+        UIMgr.Instance.closeUI(this.uiEnum);
+    }
+
 
 }
 
