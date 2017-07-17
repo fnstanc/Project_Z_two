@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChuMeng;
 using UnityEngine;
 
 public class MainMeunControl : BaseControl

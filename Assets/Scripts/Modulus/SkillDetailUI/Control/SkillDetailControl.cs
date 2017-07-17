@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public class SkillDetailControl : BaseControl
 {
@@ -34,20 +33,20 @@ public class SkillDetailControl : BaseControl
         SkillDetailData dt = new SkillDetailData();
         for (int i = 0; i < skills.Count; i++)
         {
-            SkillConfigData data = SkillConfig.Instance.getSkillConfig(skills[i]);
-            if (data != null)
+            SkillConfigConfig conf = SkillConfigConfig.Get(skills[i]);
+            if (conf != null)
             {
                 SkillDetailItemData info = new SkillDetailItemData();
-                info.id = data.tempId;
-                info.skillIcon = data.skillIcon;
-                info.skillName = data.skillName;
-                info.skillDesc = data.skillDesc;
-                info.skillModeType = getModeType(data.skillModeType);
-                info.atkType = getAtkType(data.atkType);
-                info.atkRange = (float)data.atkRange;
-                info.horAngle = data.horAngle;
-                info.verAngle = data.verAngle;
-                info.skillDamage = data.skillDamage;
+                info.id = conf.tempId;
+                info.skillIcon = conf.skillIcon;
+                info.skillName = conf.skillName;
+                info.skillDesc = conf.skillDesc;
+                info.skillModeType = getModeType(conf.skillModeType);
+                info.atkType = getAtkType(conf.atkType);
+                info.atkRange = conf.atkRange;
+                info.horAngle = conf.horAngle;
+                info.verAngle = conf.verAngle;
+                info.skillDamage = conf.skillDamage;
                 dt.lst.Add(info);
             }
         }

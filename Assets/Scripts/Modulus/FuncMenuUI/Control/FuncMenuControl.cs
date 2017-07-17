@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public class FuncMenuControl : BaseControl
 {
@@ -24,12 +23,11 @@ public class FuncMenuControl : BaseControl
     private FuncMenuData initData()
     {
         FuncMenuData data = new FuncMenuData();
-
-        List<FuncMenuConfigData> lst = GameData.FuncMenuConfig;
-        for (int i = 0; i < lst.Count; i++)
+        FuncMenuConfigConfig[] lst = FuncMenuConfigConfig.GetValues();
+        for (int i = 0; i < lst.Length; i++)
         {
             FuncMenuItemData dt = new FuncMenuItemData();
-            dt.id = lst[i].id;
+            dt.id = lst[i].tempId;
             dt.isShow = lst[i].isShow;
             dt.icon = lst[i].icon;
             dt.name = lst[i].name;

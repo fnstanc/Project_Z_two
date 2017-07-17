@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public class AudioInfo
 {
@@ -53,8 +52,8 @@ public class AudioMgr : Singleton<AudioMgr>
     //初始化数据
     private void initAudio()
     {
-        List<AudioConfigData> lst = GameData.AudioConfig;
-        for (int i = 0; i < lst.Count; i++)
+        AudioConfigConfig[] lst = AudioConfigConfig.GetValues();
+        for (int i = 0; i < lst.Length; i++)
         {
             AudioInfo info = new AudioInfo();
             info.tempId = lst[i].tempId;

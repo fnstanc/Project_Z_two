@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChuMeng;
 
 public class SkillInfo
 {
@@ -47,8 +46,8 @@ public class SkillWidget
     private void init(List<int> skills)
     {
         for (int i = 0; i < skills.Count; i++)
-        {
-            SkillConfigData data = SkillConfig.Instance.getSkillConfig(skills[i]);
+        {           
+            SkillConfigConfig data = SkillConfigConfig.Get(skills[i]);
             if (data != null)
             {
                 SkillInfo info = new SkillInfo();

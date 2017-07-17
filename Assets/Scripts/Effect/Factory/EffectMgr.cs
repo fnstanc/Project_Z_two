@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChuMeng;
 using UnityEngine;
 
 public enum EffectType
@@ -13,7 +12,7 @@ public enum EffectType
 
 public class EffectInfo
 {
-    public EffectConfigData config;
+    public EffectConfigConfig config;
     public BaseEntity agent;
     public Transform parent;
     public Vector3 initPos;
@@ -50,19 +49,12 @@ public class EffectInfo
 
 public class EffectMgr : Singleton<EffectMgr>
 {
-    private Dictionary<int, EffectConfigData> dictEff = null;
     private Dictionary<int, BaseEffect> createdEff = null;
     private int count = 1;
     public override void init()
     {
         base.init();
-        dictEff = new Dictionary<int, EffectConfigData>();
         createdEff = new Dictionary<int, BaseEffect>();
-        List<EffectConfigData> lst = GameData.EffectConfig;
-        for (int i = 0; i < lst.Count; i++)
-        {
-            dictEff.Add(lst[i].tempId, lst[i]);
-        }
     }
 
     private string effectPathPre = "Effect/";
@@ -73,9 +65,9 @@ public class EffectMgr : Singleton<EffectMgr>
 
     public int createEffect(int effId, EffectInfo info)
     {
-        if (dictEff.ContainsKey(effId))
+        EffectConfigConfig config = EffectConfigConfig.Get(effId);
+        if (config != null)
         {
-            EffectConfigData config = dictEff[effId];
             info.config = config;
             GameObject cacheGo = PoolMgr.Instance.getObj(config.tempId + config.path);
             if (cacheGo == null)

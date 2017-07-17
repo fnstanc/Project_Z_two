@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ChuMeng;
 using UnityEngine;
 
 public class SkillUIControl : BaseControl
@@ -60,7 +59,7 @@ public class SkillUIControl : BaseControl
         SkillUIData dt = new SkillUIData();
         for (int i = 0; i < skills.Count; i++)
         {
-            SkillConfigData data = SkillConfig.Instance.getSkillConfig(skills[i]);
+            SkillConfigConfig data = SkillConfigConfig.Get(skills[i]);
             if (data != null)
             {
                 SkillItemUIData info = new SkillItemUIData();

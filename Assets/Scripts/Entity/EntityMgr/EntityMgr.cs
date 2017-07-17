@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public class EntityInfo
 {
@@ -196,34 +195,28 @@ public class EntityMgr : Singleton<EntityMgr>
     //加载静态数据
     private void loadStaticData()
     {
-        List<ModelConfigData> lst = GameData.ModelConfig;
-        for (int i = 0; i < lst.Count; i++)
+        ModelConfigConfig[] confs = ModelConfigConfig.GetValues();
+        for (int i = 0; i < confs.Length; i++)
         {
             EntityInfo data = new EntityInfo();
-            data.TempId = lst[i].tempId;
-            data.Name = lst[i].name;
-            data.Type = (EntityType)lst[i].type;
-            data.SonType = (EntitySonType)lst[i].sonType;
-            data.Path = lst[i].loadPath;
-            data.HP = lst[i].hp;
-            data.NameHeight = lst[i].nameHeight;
+            data.TempId = confs[i].tempId;
+            data.Name = confs[i].name;
+            data.Type = (EntityType)confs[i].type;
+            data.SonType = (EntitySonType)confs[i].sonType;
+            data.Path = confs[i].loadPath;
+            data.HP = confs[i].hp;
+            data.NameHeight = confs[i].nameHeight;
             //出生点
-            string[] vec = lst[i].spawnPos.Split(',');
-            Vector3 pos = new Vector3(int.Parse(vec[0]), int.Parse(vec[1]), int.Parse(vec[2]));
-            data.SpawnPos = pos;
+            data.SpawnPos = ConfigUtils.getVector3(confs[i].spawnPos);
             //技能
-            string[] skills = lst[i].skills.Split(',');
-            for (int j = 0; j < skills.Length; j++)
+            if (data.Skills == null)
             {
-                if (data.Skills == null)
-                {
-                    data.Skills = new List<int>();
-                }
-                data.Skills.Add(int.Parse(skills[j]));
+                data.Skills = new List<int>();
             }
-            data.workingDataId = lst[i].wdID;
+            data.Skills.AddRange(ConfigUtils.getIntLst(confs[i].skills));
+            data.workingDataId = confs[i].wdID;
 
-            dictInfo.Add(lst[i].tempId, data);
+            dictInfo.Add(confs[i].tempId, data);
         }
     }
 }

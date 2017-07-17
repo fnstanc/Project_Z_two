@@ -37,7 +37,6 @@ public class MonsterPartolAct : BTActionNode
 
     public override void onEnter(WorkingData wd)
     {
-        Debug.Log("MonsterPartolAct OnEnter agent.name  : " + wd.dyAgent.Name);
         dyAgent = wd.dyAgent;
         nextSeekTime = wd.seekTime + Time.timeSinceLevelLoad;
         nextPartolPoint = getPartolPoint(wd);

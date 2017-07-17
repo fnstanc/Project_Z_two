@@ -8,7 +8,8 @@ public class AppMain : MonoBehaviour
     {
         init();
         //初始化所有监听
-
+        SerializableSet set = ResMgr.Instance.loadResByType<SerializableSet>("SerializableSet");
+        Deserializer.Deserialize(set);
     }
 
 

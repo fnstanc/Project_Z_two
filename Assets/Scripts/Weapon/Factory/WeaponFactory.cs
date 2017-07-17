@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public class WeaponInfo
 {
@@ -87,13 +86,11 @@ public class WeaponFactory : Singleton<WeaponFactory>
     //武器静态数据
     private void initConfig()
     {
-        List<SupplyConfigData> lst = GameData.SupplyConfig;
-        for (int i = 0; i < lst.Count; i++)
+        SupplyConfigConfig[] lst = SupplyConfigConfig.GetValues();
+        for (int i = 0; i < lst.Length; i++)
         {
             WeaponInfo data = new WeaponInfo();
             data.Type = (WeaponType)lst[i].tempId;
-            data.RightPath = lst[i].rightPath;
-            data.LeftPath = lst[i].leftPath;
             data.CostMoney = lst[i].costMoney;
             data.BaseDamage = lst[i].baseDamage;
             data.AddDamage = lst[i].addDamage;

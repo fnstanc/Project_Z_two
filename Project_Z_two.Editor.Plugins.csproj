@@ -112,9 +112,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="configDll">
-      <HintPath>Assets\Plugins\configDll.dll</HintPath>
-    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -157,6 +154,16 @@
     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Config\AudioConfig.txt" />
+    <None Include="Assets\Config\BulletConfig.txt" />
+    <None Include="Assets\Config\EffectConfig.txt" />
+    <None Include="Assets\Config\FuncMenuConfig.txt" />
+    <None Include="Assets\Config\ItemConfig.txt" />
+    <None Include="Assets\Config\LevelDesign.txt" />
+    <None Include="Assets\Config\ModelConfig.txt" />
+    <None Include="Assets\Config\SkillConfig.txt" />
+    <None Include="Assets\Config\SupplyConfig.txt" />
+    <None Include="Assets\Config\WorkingDataConfig.txt" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

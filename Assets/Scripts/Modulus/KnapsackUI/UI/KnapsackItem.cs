@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using ChuMeng;
 
 public class KnapsackItem : BaseUI
 {

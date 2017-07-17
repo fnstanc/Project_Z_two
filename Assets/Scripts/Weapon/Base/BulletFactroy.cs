@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 public enum ATK_Type
 {
@@ -44,7 +43,8 @@ public class BulletFactroy
     public static void createBullet(EntityDynamicActor agent, int bulletId)
     {
         BulletInfo info = new BulletInfo();
-        BulletConfigData dt = getConfById(bulletId);
+        BulletConfigConfig dt = BulletConfigConfig.Get(bulletId);
+        if (dt == null) return;
         info.dyAgent = agent;
         info.lifeTime = dt.bulletLife;
         info.bulletSpeed = (float)dt.bulletSpeed;
@@ -72,17 +72,5 @@ public class BulletFactroy
         }
         return t;
     }
-
-    private static BulletConfigData getConfById(int id)
-    {
-        for (int i = 0; i < GameData.BulletConfig.Count; i++)
-        {
-            if (GameData.BulletConfig[i].tempId == id)
-                return GameData.BulletConfig[i];
-        }
-        return null;
-    }
-
-
 }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using ChuMeng;
 
 //只有contorl才能发消息给服务器  UI那边不能这样做(虽然你可以这么做)
 public class KnapsackControl : BaseControl
@@ -43,41 +42,5 @@ public class KnapsackControl : BaseControl
         netMsg["count"] = count;
         netMsg.Send();
     }
-
-    //根据模板id获取物品config
-    private ItemConfigData getGoodsConfig(int tempId)
-    {
-        ItemConfigData config = null;
-        List<ItemConfigData> lst = GameData.ItemConfig;
-        for (int i = 0; i < lst.Count; i++)
-        {
-            if (lst[i].tempId == tempId)
-            {
-                config = lst[i];
-            }
-        }
-        return config;
-    }
-
-    //弃用 应该使用服务器与客户端静态数据结合的数据
-    private KnapsackData getData()
-    {
-        KnapsackData data = new KnapsackData();
-        List<ItemConfigData> lst = GameData.ItemConfig;
-        for (int i = 0; i < lst.Count; i++)
-        {
-            KnapsackItemData dt = new KnapsackItemData();
-            dt.TempId = lst[i].tempId;
-            dt.Name = lst[i].name;
-            dt.Type = lst[i].type;
-            dt.SonType = lst[i].sonType;
-            dt.Count = lst[i].count;
-            dt.Desc = lst[i].desc;
-            //data.lst.Add(dt);
-        }
-        return data;
-    }
-
-
 }
 

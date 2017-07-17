@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using ChuMeng;
 
 public class SceneInfo
 {
@@ -123,8 +122,9 @@ public class SceneMgr : Singleton<SceneMgr>
     }
     private void initConfig()
     {
-        List<LevelDesignData> lst = new List<LevelDesignData>(GameData.LevelDesign);
-        for (int i = 0; i < lst.Count; i++)
+        LevelDesignConfig[] lst = LevelDesignConfig.GetValues();
+
+        for (int i = 0; i < lst.Length; i++)
         {
             SceneInfo dt = new SceneInfo();
             dt.LevelName = lst[i].levelName;

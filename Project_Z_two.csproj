@@ -76,9 +76,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="configDll">
-      <HintPath>Assets\Plugins\configDll.dll</HintPath>
-    </Reference>
     <Reference Include="DemiLib">
       <HintPath>Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
@@ -142,6 +139,18 @@
     <Compile Include="Assets\Scripts\Common\AppMain.cs" />
     <Compile Include="Assets\Scripts\Common\DDOLObj.cs" />
     <Compile Include="Assets\Scripts\Common\MainCameraWidget.cs" />
+    <Compile Include="Assets\Scripts\Config\AudioConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\BulletConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\Deserializer.cs" />
+    <Compile Include="Assets\Scripts\Config\EffectConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\FuncMenuConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\ItemConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\LevelDesignConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\ModelConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\SerializableSet.cs" />
+    <Compile Include="Assets\Scripts\Config\SkillConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\SupplyConfigConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\WorkingDataConfigConfig.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects\AfterImageEffects.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects\BaseEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects\NormalEffect.cs" />
@@ -157,12 +166,12 @@
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMainPlayer.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMonster.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\ISkill.cs" />
-    <Compile Include="Assets\Scripts\Entity\Interface\SkillConfig.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\GameHelper\AttackHelper\AttackHelper.cs" />
     <Compile Include="Assets\Scripts\GameHelper\Camera\CrystalHPUIItem.cs" />
     <Compile Include="Assets\Scripts\GameHelper\Camera\StaticCamera.cs" />
     <Compile Include="Assets\Scripts\GameHelper\ColorUtils\ColorUtils.cs" />
+    <Compile Include="Assets\Scripts\GameHelper\ConfigUtils\ConfigUtils.cs" />
     <Compile Include="Assets\Scripts\Mgr\AudioMgr\AudioMgr.cs" />
     <Compile Include="Assets\Scripts\Mgr\MsgCenter\Message.cs" />
     <Compile Include="Assets\Scripts\Mgr\MsgCenter\MessageCenter.cs" />
@@ -249,6 +258,16 @@
     <Compile Include="Assets\Scripts\Weapon\Weapons\WeaponShotGun.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Config\AudioConfig.txt" />
+    <None Include="Assets\Config\BulletConfig.txt" />
+    <None Include="Assets\Config\EffectConfig.txt" />
+    <None Include="Assets\Config\FuncMenuConfig.txt" />
+    <None Include="Assets\Config\ItemConfig.txt" />
+    <None Include="Assets\Config\LevelDesign.txt" />
+    <None Include="Assets\Config\ModelConfig.txt" />
+    <None Include="Assets\Config\SkillConfig.txt" />
+    <None Include="Assets\Config\SupplyConfig.txt" />
+    <None Include="Assets\Config\WorkingDataConfig.txt" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween46.xml" />

@@ -72,7 +72,7 @@ public class DamageTipsUI : BaseUI
     private void doDamageAnim(DamageTipsData dt)
     {
         //control那边做过滤
-        if (dt.dataQueue.Count > 0)
+        while (dt.dataQueue.Count > 0)
         {
             DamageData data = dt.dataQueue.Dequeue();
             //如果没有缓存的item 实例化

@@ -33,7 +33,7 @@ public class NormalEffect : BaseEffect
         {
             sys.Play(true);
             ParticleSystem.MainModule main = sys.main;
-            main.startSize = (float)info.config.startSize;
+            main.startSize =info.config.startSize;
             main.loop = info.config.isLoop;
         }
         isSetInfo = true;
