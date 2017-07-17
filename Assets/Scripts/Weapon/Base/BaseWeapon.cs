@@ -43,8 +43,6 @@ public class BaseWeapon : MonoBehaviour
     //重置位置
     public virtual void resetTrans()
     {
-        agent.setRightWeapon(this);
-        this.transform.SetParent(agent.RightHand);
         this.transform.localPosition = new Vector3(0, 0, 0);
         this.transform.localEulerAngles = new Vector3(0, 0, 0);
     }
@@ -87,7 +85,6 @@ public class BaseWeapon : MonoBehaviour
                 Debug.Log(hitInfo.point);
                 EffectInfo info = new EffectInfo(new Vector3(hitInfo.point.x, hitInfo.point.y - 1f, hitInfo.point.z), new Vector3(0, 0, 0), hitInfo.collider.transform);
                 EffectMgr.Instance.createEffect(10007, info);
-                int damage = (int)(this.info.BaseDamage + this.info.AddDamage * this.agent.getValue(BType.energy) / 100);
             }
 
         }

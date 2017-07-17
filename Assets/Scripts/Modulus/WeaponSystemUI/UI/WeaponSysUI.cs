@@ -31,20 +31,7 @@ public class WeaponSysUI : BaseUI
 
     private void onPropertyChanage(Message msg)
     {
-        BType type = (BType)msg["type"];
-        int val = (int)msg["val"];
-        switch (type)
-        {
-            case BType.money:
-                money.text = "金币: " + val;
-                break;
-            case BType.score:
-                score.text = "分数: " + val;
-                break;
-            case BType.energy:
-                energy.text = "能量: " + val;
-                break;
-        }
+
     }
 
     public override void refreshUI()

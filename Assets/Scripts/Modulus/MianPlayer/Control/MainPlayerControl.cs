@@ -13,8 +13,7 @@ public class MainPlayerControl : BaseControl
 
     public override void initListener()
     {
-        MessageCenter.Instance.addListener(MsgCmd.Open_MainPlayer_UI, onOpenUI);
-  
+        MessageCenter.Instance.addListener(MsgCmd.Open_MainPlayer_UI, onOpenUI);      
     }
 
     private void onOpenUI(Message msg)

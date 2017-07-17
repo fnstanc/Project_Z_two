@@ -15,7 +15,10 @@ public class MonsterBTAI : BTTree
         this.root = new BTSequenceNode();
         BTSelectorNode select_1 = new BTSelectorNode();
 
+
+        MonsterPartolCond parCond = new MonsterPartolCond();
         MonsterPartolAct patrolAct = new MonsterPartolAct();
+//        select_1.addChild(parCond);
         select_1.addChild(patrolAct);
 
 

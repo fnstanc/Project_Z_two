@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -109,6 +107,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterAttackAct.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterPartolAct.cs" />
+    <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Condition\MonsterPartolCond.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Tree\MonsterBTAI.cs" />
     <Compile Include="Assets\Scripts\AI\BT\Base\BaseNode\BTNode.cs" />
     <Compile Include="Assets\Scripts\AI\BT\Base\Composite\BTCompositeNode.cs" />
@@ -171,11 +170,11 @@
     <Compile Include="Assets\Scripts\Mgr\ResMgr\ResMgr.cs" />
     <Compile Include="Assets\Scripts\Mgr\ResMgr\SpriteMgr.cs" />
     <Compile Include="Assets\Scripts\Mgr\TimeMgr\TimeMgr.cs" />
+    <Compile Include="Assets\Scripts\Modulus\DDOLCanvas.cs" />
+    <Compile Include="Assets\Scripts\Modulus\DamageTipsUI\Control\DamageTipsControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\DamageTipsUI\Data\DamageTipsData.cs" />
     <Compile Include="Assets\Scripts\Modulus\DamageTipsUI\UI\DamageTipsItemUI.cs" />
     <Compile Include="Assets\Scripts\Modulus\DamageTipsUI\UI\DamageTipsUI.cs" />
-    <Compile Include="Assets\Scripts\Modulus\DDOLCanvas.cs" />
-    <Compile Include="Assets\Scripts\Modulus\DamageTipsUI\Control\DamageTipsControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Control\FuncMenuControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Data\FuncMenuData.cs" />
     <Compile Include="Assets\Scripts\Modulus\FuncMenuUI\Data\FuncMenuItemData.cs" />

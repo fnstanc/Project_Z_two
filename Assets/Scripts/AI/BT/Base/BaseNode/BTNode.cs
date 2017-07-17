@@ -19,6 +19,10 @@ public enum BTResult
 public class BTNode
 {
 
+    public virtual bool canDo(WorkingData wd)
+    {
+        return true;
+    }
 
     public virtual BTResult onTick(WorkingData wd)
     {

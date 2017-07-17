@@ -6,9 +6,11 @@ public abstract class BTTree
 
     public BTNode root;
 
-    public void onTick(WorkingData  wd)
+    public void onTick(WorkingData wd)
     {
-        if (root != null)
+        if (root == null)
+            return;
+        if (root.canDo(wd))
             root.onTick(wd);
     }
 

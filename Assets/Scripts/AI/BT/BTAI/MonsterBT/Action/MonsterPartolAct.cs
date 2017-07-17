@@ -30,6 +30,11 @@ public class MonsterPartolAct : BTActionNode
         }
     }
 
+    public override bool canDo(WorkingData wd)
+    {
+        return wd.dyAgent.SType != StateType.onHit;
+    }
+
     public override void onEnter(WorkingData wd)
     {
         Debug.Log("MonsterPartolAct OnEnter agent.name  : " + wd.dyAgent.Name);
@@ -40,6 +45,7 @@ public class MonsterPartolAct : BTActionNode
 
     public override ActionStatus onUpdate(WorkingData wd)
     {
+
         if (Time.timeSinceLevelLoad >= nextSeekTime && wd.dyAgent.Target == null)
         {
             List<BaseEntity> players = EntityMgr.Instance.getEntityByType(EntityType.player);
@@ -57,11 +63,14 @@ public class MonsterPartolAct : BTActionNode
             nextSeekTime = wd.seekTime + Time.timeSinceLevelLoad;
         }
 
-        if (Time.timeSinceLevelLoad >= nextPartolTime && wd.dyAgent.SType != StateType.onHit)
+        if (wd.dyAgent.SType == StateType.onHit)
+            return ActionStatus.finished;
+
+        if (Time.timeSinceLevelLoad >= nextPartolTime)
         {
             if (Vector3.Distance(wd.dyAgent.CacheTrans.position, nextPartolPoint) > 1f)
             {
-                IsDoPartol = true;
+                this.dyAgent.onChangeState(StateType.run);
                 wd.dyAgent.CacheTrans.LookAt(nextPartolPoint, Vector3.up);
                 wd.dyAgent.CC.SimpleMove((nextPartolPoint - wd.dyAgent.CacheTrans.position).normalized);
             }
@@ -73,7 +82,7 @@ public class MonsterPartolAct : BTActionNode
         }
         else
         {
-            IsDoPartol = false;
+            this.dyAgent.onChangeState(StateType.idle);
         }
         return ActionStatus.running;
     }
@@ -82,6 +91,8 @@ public class MonsterPartolAct : BTActionNode
     {
 
     }
+
+
 
 
     //get partol point

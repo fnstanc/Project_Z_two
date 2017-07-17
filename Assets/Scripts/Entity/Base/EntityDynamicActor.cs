@@ -21,11 +21,23 @@ public class EntityDynamicActor : BaseEntity, ISkill
     public Animator animator = null;
     [HideInInspector]
     public CharacterController CC = null;
-    public BaseEntity Target = null;
+
     public FSM fsm = null;
     protected SkillWidget MySkill = null;
     protected WordBubbleWidget WBW = null;
-
+    public BaseEntity Target
+    {
+        get
+        {
+            int id = this.BB.getValue<int>(Attr.target.ToString());
+            return EntityMgr.Instance.getEntityById(id);
+        }
+        set
+        {
+            BaseEntity entity = value as BaseEntity;
+            this.BB.onValueChange(Attr.target.ToString(), entity.UID);
+        }
+    }
 
     public StateType SType = StateType.none;
 
@@ -65,6 +77,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
     public override void onCreate(EntityInfo data)
     {
         base.onCreate(data);
+        // this.BB.onValueChange(Attr.target.ToString(), null);
         //创建姓名版 血条等..
         BillBoard = this.CacheObj.AddComponent<DynamicBillBoard>();
         BillBoard.onCreate(this.info);

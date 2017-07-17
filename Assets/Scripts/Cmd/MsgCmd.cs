@@ -56,6 +56,8 @@ public class MsgCmd
     //MainPlayerUI
     public const string Open_MainPlayer_UI = "Open_MainPlayer_UI";
     public const string On_MainPlayer_CastSkill = "On_MainPlayer_CastSkill";
+    public const string On_MainPlayer_TargetChange = "On_MainPlayer_TargetChange";
+
     //MainPlayerMove Cmd
     public const string On_MainPlayer_Moving= "On_MainPlayer_Moving";
     public const string On_MainPlayer_Move_Start = "On_MainPlayer_Move_Start";

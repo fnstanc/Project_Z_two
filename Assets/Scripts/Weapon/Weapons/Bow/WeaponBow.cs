@@ -18,8 +18,6 @@ public class WeaponBow : BaseWeapon
 
     public override void resetTrans()
     {
-        agent.setLeftWeapon(this);
-        this.transform.SetParent(agent.LeftHand);
         this.transform.localPosition = new Vector3(0, 0, 0);
         this.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         this.transform.localEulerAngles = new Vector3(90, 0, 180);
@@ -66,7 +64,7 @@ public class WeaponBow : BaseWeapon
         pullDis = pullDis < -4.4f ? -4.4f : pullDis;
         if (dis < 0 || pullDis > -1.4f)
         {
-            agent.bowGiveUP();
+     
         }
         bowString.localPosition = new Vector3(0, pullDis, 0);
     }

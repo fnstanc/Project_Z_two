@@ -77,13 +77,13 @@ public class BaseEntity : MonoBehaviour
     {
         get
         {
-            return this.hp;
+            return float.Parse(this.BB.getValue(Attr.hp.ToString()).ToString());
         }
         protected set
         {
-            this.hp = value;
+            this.BB.onValueChange(Attr.hp.ToString(), value);
             if (this.BillBoard != null)
-                this.BillBoard.setFloatByType(PartType.bloodPart, (this.hp / this.OrgHP) < 0 ? 0 : this.hp / this.OrgHP);
+                this.BillBoard.setFloatByType(PartType.bloodPart, (value / this.OrgHP) < 0 ? 0 : value / this.OrgHP);
         }
     }
     public string Name;
@@ -93,7 +93,6 @@ public class BaseEntity : MonoBehaviour
 
     private void Awake()
     {
-        BB = new BlackBoard();
         onAwake();
     }
 
@@ -117,22 +116,64 @@ public class BaseEntity : MonoBehaviour
     }
     public virtual void onUpdate()
     {
-        
+
     }
 
     //当实体创建
     public virtual void onCreate(EntityInfo data)
     {
+        BB = new BlackBoard();
         this.info = data;
         this.EType = data.Type;
+        BB.onValueChange(Attr.entityType.ToString(), data.Type);
         this.HP = data.HP;
+        BB.onValueChange(Attr.hp.ToString(), data.HP);
         this.OrgHP = data.HP;
+        BB.onValueChange(Attr.orgHP.ToString(), data.HP);
         this.Name = data.Name;
+        BB.onValueChange(Attr.name.ToString(), data.Name);
         this.UID = data.UID;
+        BB.onValueChange(Attr.uid.ToString(), data.UID);
         this.SonType = data.SonType;
+        BB.onValueChange(Attr.entitySonType.ToString(), data.SonType);
         this.CacheTrans.position = data.SpawnPos;
         this.Skills = new List<int>(data.Skills);
+        BB.onValueChange(Attr.skillLst.ToString(), new List<int>(data.Skills));
     }
+    #region 黑板操作
+    //实体大部分信息放在黑板中
+    public T getAttr<T>(string type)
+    {
+        return this.BB.getValue<T>(type);
+    }
+    public object getAttr(string type)
+    {
+        return this.BB.getValue(type);
+    }
+    public void onAttrChange(string type, object val)
+    {
+        this.BB.onValueChange(type, val);
+    }
+    public void onAttrAdd(string type, float val)
+    {
+        this.BB.onAddValue(type, val);
+    }
+    public void addAttrHandler(string type, Action<object> handler)
+    {
+        this.BB.addValueHandler(type, handler);
+    }
+    public void removeAttrHandler(string type, Action<object> handler)
+    {
+        this.BB.removeValueHandler(type, handler);
+    }
+    public void removeAttrHandlerByType(string type, bool isRemoveAll = false)
+    {
+        this.BB.removeAllValueHandlerByType(type, isRemoveAll);
+    }
+
+    #endregion
+
+
     public virtual int getWorkingDataId()
     {
         return this.info.workingDataId;
@@ -149,17 +190,7 @@ public class BaseEntity : MonoBehaviour
 
     }
 
-    public virtual void onChangeValue(Message msg)
-    {
-        BType type = (BType)msg["type"];
-        int val = (int)msg["val"];
-        this.BB.onChangeValue(type, val);
-    }
 
-    public virtual int getValue(BType type)
-    {
-        return this.BB.getValue(type);
-    }
 
     //模型颜色改变
     private Renderer render;
@@ -206,7 +237,7 @@ public class BaseEntity : MonoBehaviour
     }
     public virtual void onDispose()
     {
-
+        this.BB.removeAllValueHandlerByType("", true);
     }
 
 

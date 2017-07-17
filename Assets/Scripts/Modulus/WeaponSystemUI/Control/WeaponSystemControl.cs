@@ -50,9 +50,7 @@ public class WeaponSystemControl : BaseControl
         BaseEntity player = playerLst != null && playerLst.Count > 0 ? playerLst[0] : null;
         if (player != null)
         {
-            data.Money = player.getValue(BType.money);
-            data.Score = player.getValue(BType.score);
-            data.Energy = player.getValue(BType.energy);
+           
         }
         //canvas的位置旋转
         Vector3 pos = (Vector3)msg["Pos"];
