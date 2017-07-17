@@ -193,7 +193,7 @@ public class BaseEntity : MonoBehaviour
 
 
     //模型颜色改变
-    private Renderer render;
+    private Renderer[] render;
     private Tweener tweener;
     public virtual void onChangeColor()
     {
@@ -204,11 +204,14 @@ public class BaseEntity : MonoBehaviour
                 //0,0,0,1 -> 1,0,0,1
                 if (render == null)
                 {
-                    render = this.CacheObj.GetComponentInChildren<Renderer>();
+                    render = this.CacheObj.GetComponentsInChildren<Renderer>();
                 }
-                if (render != null)
+                if (render != null && render.Length > 0)
                 {
-                    render.material.SetColor("_EmissionColor", new Color(progress, 0, 0));
+                    for (int j = 0; j < render.Length; j++)
+                    {
+                        render[j].material.SetColor("_EmissionColor", new Color(progress, 0, 0));
+                    }
                 }
             }, 0, 1, 0.5f).OnComplete(() =>
             {
@@ -216,11 +219,14 @@ public class BaseEntity : MonoBehaviour
                 {
                     if (render == null)
                     {
-                        render = this.CacheObj.GetComponentInChildren<Renderer>();
+                        render = this.CacheObj.GetComponentsInChildren<Renderer>();
                     }
-                    if (render != null)
+                    if (render != null && render.Length > 0)
                     {
-                        render.material.SetColor("_EmissionColor", new Color(progress2, 0, 0));
+                        for (int j = 0; j < render.Length; j++)
+                        {
+                            render[j].material.SetColor("_EmissionColor", new Color(progress2, 0, 0));
+                        }
                     }
                 }, 1, 0, 0.5f).OnComplete(() =>
                 {
@@ -240,6 +246,10 @@ public class BaseEntity : MonoBehaviour
         this.BB.removeAllValueHandlerByType("", true);
     }
 
+    public virtual void onReSpawn()
+    {
+        this.HP = float.Parse(this.getAttr(Attr.orgHP.ToString()).ToString());
+    }
 
 }
 

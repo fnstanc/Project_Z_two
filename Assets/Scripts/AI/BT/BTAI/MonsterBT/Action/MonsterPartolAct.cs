@@ -71,7 +71,7 @@ public class MonsterPartolAct : BTActionNode
             {
                 this.dyAgent.onChangeState(StateType.run);
                 wd.dyAgent.CacheTrans.LookAt(nextPartolPoint, Vector3.up);
-                wd.dyAgent.CC.SimpleMove((nextPartolPoint - wd.dyAgent.CacheTrans.position).normalized);
+                wd.dyAgent.moveTo((nextPartolPoint - wd.dyAgent.CacheTrans.position).normalized);
             }
             else
             {

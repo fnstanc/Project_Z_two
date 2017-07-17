@@ -21,6 +21,7 @@ public class MonsterFSM : FSM
         this.dictStates.Add(StateType.run, new PlayerRunState(this.agent, StateType.run));
         this.dictStates.Add(StateType.spawn, new PlayerSpawnState(this.agent, StateType.spawn));
         this.dictStates.Add(StateType.onHit, new PlayerOnHitState(this.agent, StateType.onHit));
+        this.dictStates.Add(StateType.die, new PlayerDieState(this.agent, StateType.die));
     }
 }
 

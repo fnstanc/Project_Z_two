@@ -63,15 +63,18 @@ public class EntityDynamicActor : BaseEntity, ISkill
         base.onUpdate();
         if (fsm != null)
             fsm.onTick();
-        if (isUseG)
+        if (CC.enabled && isUseG)
             CC.SimpleMove(Vector3.zero);
-        //if (!CC.isGrounded)
-        //    CC.SimpleMove(Vector3.up * -1 * Time.deltaTime);
     }
 
     public void setUseGrivaty(bool isUse)
     {
         isUseG = isUse;
+    }
+    public void moveTo(Vector3 dir)
+    {
+        if (CC.enabled)
+            CC.SimpleMove(dir);
     }
 
     public override void onCreate(EntityInfo data)

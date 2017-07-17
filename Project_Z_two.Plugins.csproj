@@ -121,6 +121,8 @@
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Plugins\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Res\Blood\Shaders\Blood.shader" />
+    <None Include="Assets\Res\Blood\Shaders\BloodNoSmooth.shader" />
     <None Include="Assets\Res\Material\mat.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,8 +10,8 @@ public class TestDel : MonoBehaviour
 
     private void Start()
     {
-        cc = this.GetComponent<CharacterController>();
-        this.cc.SimpleMove(Vector3.up * -1);
+        //cc = this.GetComponent<CharacterController>();
+        //this.cc.SimpleMove(Vector3.up * -1);
     }
 
     private void Update()

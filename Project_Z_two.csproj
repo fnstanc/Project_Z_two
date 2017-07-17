@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -102,6 +104,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Res\Blood\Others\DemoGUI.cs" />
+    <Compile Include="Assets\Res\Blood\Others\DemoReactivator.cs" />
+    <Compile Include="Assets\Res\Blood\Others\UVTextureAnimator.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterAttackAct.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterPartolAct.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Condition\MonsterPartolCond.cs" />
@@ -127,6 +132,7 @@
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\MonsterFSM\FSMState\MonsterRunState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\MonsterFSM\FSMState\MonsterSpawnState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\FSM\PlayerFSM.cs" />
+    <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerDieState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerDodgeState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerOnHitState.cs" />
@@ -280,6 +286,8 @@
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Plugins\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Res\Blood\Shaders\Blood.shader" />
+    <None Include="Assets\Res\Blood\Shaders\BloodNoSmooth.shader" />
     <None Include="Assets\Res\Material\mat.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
