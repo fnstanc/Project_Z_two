@@ -24,7 +24,7 @@ public class SkillConfigConfig
     public int skillType;
 
     /// <summary>
-    /// 技能FSM状态(对应StateTye)0.idle1.run2.onHit3.die4.spawn5.skill6.dodge100.yasuoRSkill
+    /// 技能FSM状态(对应StateTye)0.idle1.run2.onHit3.die4.spawn5.skill6.dodge7baseCombo 100.yasuoRSkill
     /// </summary>
     public int fsmState;
 

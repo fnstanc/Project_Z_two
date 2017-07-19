@@ -13,6 +13,7 @@ public enum Attr
     money,
     skillLst,
     target,
+    comboSkills,
 }
 
 

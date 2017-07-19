@@ -52,6 +52,7 @@ public class MsgCmd
     //技能UI
     public const string Open_Skill_UI = "Open_Skill_UI";
     public const string On_Skill_Release_Success = "On_Skill_Release_Success";
+    public const string On_Combo_Release_Success = "On_Combo_Release_Success";
 
     //MainPlayerUI
     public const string Open_MainPlayer_UI = "Open_MainPlayer_UI";

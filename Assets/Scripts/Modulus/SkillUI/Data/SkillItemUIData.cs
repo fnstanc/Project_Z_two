@@ -9,15 +9,15 @@ public class SkillItemUIData : BaseData
     public string skillIcon;
     public string animName;
 
-    public double skillEffectTime;
+    public float skillEffectTime;
     public int skillEffectID;
 
-    public double skillAudioTime;
+    public float skillAudioTime;
     public int skillAudioId;
     //技能类型
     public SkillType skillType;
     public int skillBulletId;
-    public double skillAtkTime;
+    public float skillAtkTime;
     //fsm状态
     public StateType fsmStateType;
     //技能作用类型 目前用于UI展示做区分

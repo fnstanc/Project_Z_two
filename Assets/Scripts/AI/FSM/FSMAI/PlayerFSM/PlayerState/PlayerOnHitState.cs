@@ -93,7 +93,7 @@ public class PlayerOnHitState : FSMState
 
     public override bool isCanChangeTo(StateType type)
     {
-        return type == StateType.idle ? true : false;
+        return type == StateType.idle || type == StateType.onHit ? true : false;
     }
 
 }

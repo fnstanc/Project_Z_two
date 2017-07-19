@@ -34,6 +34,11 @@ public class ModelConfigConfig
     public string loadPath;
 
     /// <summary>
+    /// 实体combo技能
+    /// </summary>
+    public string comboSkills;
+
+    /// <summary>
     /// 实体技能
     /// </summary>
     public string skills;

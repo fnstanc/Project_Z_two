@@ -10,8 +10,10 @@ public class SkillUIData : BaseData
         SkillItemUIData dt = null;
         for (int i = 0; i < lstSkill.Count; i++)
         {
-            if (lstSkill[i].skillModeType == SkillModeType.baseSkill)
+            if (lstSkill[i].skillModeType == SkillModeType.baseSkill) {
                 dt = lstSkill[i];
+                break;
+            }            
         }
         return dt;
     }

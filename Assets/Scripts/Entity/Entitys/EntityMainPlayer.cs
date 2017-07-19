@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Xft;
 //using VRTK;
 
 public class EntityMainPlayer : EntityDynamicActor
@@ -63,7 +64,7 @@ public class EntityMainPlayer : EntityDynamicActor
         this.HP -= dt.damage;
     }
 
-    //玩家移动
+    #region 玩家移动
     //触摸TouchPad 主角移动
     Quaternion rot = Quaternion.identity;
     Vector3 dir = Vector3.zero;
@@ -78,6 +79,12 @@ public class EntityMainPlayer : EntityDynamicActor
         this.CacheTrans.rotation = Quaternion.Lerp(this.CacheTrans.rotation, rot, 0.5f);
         CC.Move(dir * moveSpeed);
     }
+
+    public override void onChangeDir(Quaternion rot, float t)
+    {
+        this.CacheTrans.rotation = Quaternion.Lerp(this.CacheTrans.rotation, rot, t);
+    }
+
     public void onPlayerMoveStart(MoveData data)
     {
         this.onChangeState(StateType.run);
@@ -85,6 +92,25 @@ public class EntityMainPlayer : EntityDynamicActor
     public void onPlayerMoveEnd(MoveData data)
     {
         this.onChangeState(StateType.idle);
+    }
+    #endregion
+
+    private XWeaponTrail trail = null;
+    public override void activeWeaponTrail(bool isUse = false)
+    {
+        if (trail == null)
+        {
+            GameObject weapon = this.getPartObj(EntityPartType.weapon);
+            trail = weapon.GetComponent<XWeaponTrail>();
+        }
+
+        if (trail != null)
+        {
+            if (isUse)
+                trail.Activate();
+            else
+                trail.Deactivate();
+        }
     }
 
 }

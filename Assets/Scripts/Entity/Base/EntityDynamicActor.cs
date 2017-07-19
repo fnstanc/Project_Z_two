@@ -80,12 +80,19 @@ public class EntityDynamicActor : BaseEntity, ISkill
     public override void onCreate(EntityInfo data)
     {
         base.onCreate(data);
-        // this.BB.onValueChange(Attr.target.ToString(), null);
         //创建姓名版 血条等..
         BillBoard = this.CacheObj.AddComponent<DynamicBillBoard>();
         BillBoard.onCreate(this.info);
         //创建技能管理器
         MySkill = new SkillWidget(this, this.Skills);
+        //partWidget
+        this.partWidget = EntityPartMgr.create<EntityPartWidget>(this);
+    }
+
+    //改变方向
+    public virtual void onChangeDir(Quaternion rot, float t)
+    {
+
     }
 
     public virtual bool onChangeState(StateType type, FSMArgs args = null)
@@ -150,6 +157,11 @@ public class EntityDynamicActor : BaseEntity, ISkill
         {
             WBW.setWord(str, isNotRunShow);
         }
+    }
+
+    //WeaponTrail use
+    public virtual void activeWeaponTrail(bool isUse=false) {
+
     }
 
 }

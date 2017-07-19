@@ -90,6 +90,7 @@ public class BaseEntity : MonoBehaviour
     protected List<int> Skills = null;
     protected EntityInfo info = null;
     protected BlackBoard BB = null;
+    protected EntityPartWidget partWidget = null;
 
     private void Awake()
     {
@@ -139,6 +140,7 @@ public class BaseEntity : MonoBehaviour
         this.CacheTrans.position = data.SpawnPos;
         this.Skills = new List<int>(data.Skills);
         BB.onValueChange(Attr.skillLst.ToString(), new List<int>(data.Skills));
+        BB.onValueChange(Attr.comboSkills.ToString(), new List<int>(data.comboSkills));
     }
     #region 黑板操作
     //实体大部分信息放在黑板中
@@ -171,6 +173,13 @@ public class BaseEntity : MonoBehaviour
         this.BB.removeAllValueHandlerByType(type, isRemoveAll);
     }
 
+    #endregion
+
+    #region part相关操作
+    public virtual GameObject getPartObj(EntityPartType type)
+    {
+        return this.partWidget.getPartByType(type);
+    }
     #endregion
 
 

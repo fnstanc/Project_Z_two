@@ -9,9 +9,10 @@ public enum StateType
     run,
     onHit,
     die,
-    spawn,
+    spawn, 
     skill,
     dodge,//闪避
+    baseCombo,
 
     //ExtendState
     yasuoRSkill = 100,

@@ -107,6 +107,11 @@
     <Compile Include="Assets\Res\Blood\Others\DemoGUI.cs" />
     <Compile Include="Assets\Res\Blood\Others\DemoReactivator.cs" />
     <Compile Include="Assets\Res\Blood\Others\UVTextureAnimator.cs" />
+    <Compile Include="Assets\Res\XWeaponTrail\Scripts\Spline.cs" />
+    <Compile Include="Assets\Res\XWeaponTrail\Scripts\SplineControlPoint.cs" />
+    <Compile Include="Assets\Res\XWeaponTrail\Scripts\VertexPool.cs" />
+    <Compile Include="Assets\Res\XWeaponTrail\Scripts\XWeaponTrail.cs" />
+    <Compile Include="Assets\Res\XWeaponTrail\Scripts\XWeaponTrailDemo.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterAttackAct.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Action\MonsterPartolAct.cs" />
     <Compile Include="Assets\Scripts\AI\BT\BTAI\MonsterBT\Condition\MonsterPartolCond.cs" />
@@ -132,6 +137,7 @@
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\MonsterFSM\FSMState\MonsterRunState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\MonsterFSM\FSMState\MonsterSpawnState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\FSM\PlayerFSM.cs" />
+    <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerBaseComboState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerDieState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerDodgeState.cs" />
     <Compile Include="Assets\Scripts\AI\FSM\FSMAI\PlayerFSM\PlayerState\PlayerIdleState.cs" />
@@ -168,6 +174,11 @@
     <Compile Include="Assets\Scripts\Entity\BlackBoard\BlackBoard.cs" />
     <Compile Include="Assets\Scripts\Entity\DamageData\DamageData.cs" />
     <Compile Include="Assets\Scripts\Entity\EntityMgr\EntityMgr.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityMgr\EntityUtils.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityParts\BasePart\EntityBasePart.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityParts\BasePart\EntityPartMgr.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityParts\Parts\EntityWeaponPart.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityParts\PartWidget\EntityPartWidget.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityCrystal.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMainPlayer.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMonster.cs" />
@@ -289,7 +300,11 @@
     <None Include="Assets\Res\Blood\Shaders\Blood.shader" />
     <None Include="Assets\Res\Blood\Shaders\BloodNoSmooth.shader" />
     <None Include="Assets\Res\Material\mat.shader" />
+    <None Include="Assets\Res\XWeaponTrail\Model\readme.txt" />
+    <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
+    <None Include="Assets\Res\XWeaponTrail\readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

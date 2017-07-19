@@ -13,8 +13,16 @@ public class EntityInfo
     public int HP;
     public float NameHeight;
     public Vector3 SpawnPos;
-    public List<int> Skills = new List<int>();
+    public List<int> Skills;
+    public List<int> comboSkills;
     public int workingDataId;
+
+    public EntityInfo()
+    {
+        Skills = new List<int>();
+        comboSkills = new List<int>();
+    }
+
 }
 
 public class EntityMgr : Singleton<EntityMgr>
@@ -168,6 +176,16 @@ public class EntityMgr : Singleton<EntityMgr>
         }
         return null;
     }
+    public T getEntityById<T>(int uid) where T : BaseEntity
+    {
+        T entity = default(T);
+        if (dictEntityById.ContainsKey(uid))
+        {
+            entity = dictEntityById[uid] as T;
+        }
+        return entity;
+    }
+
     //获取实体根据type
     public List<BaseEntity> getEntityByType(EntityType type)
     {
@@ -209,13 +227,10 @@ public class EntityMgr : Singleton<EntityMgr>
             //出生点
             data.SpawnPos = ConfigUtils.getVector3(confs[i].spawnPos);
             //技能
-            if (data.Skills == null)
-            {
-                data.Skills = new List<int>();
-            }
             data.Skills.AddRange(ConfigUtils.getIntLst(confs[i].skills));
+            //combo
+            data.comboSkills.AddRange(ConfigUtils.getIntLst(confs[i].comboSkills));
             data.workingDataId = confs[i].wdID;
-
             dictInfo.Add(confs[i].tempId, data);
         }
     }
