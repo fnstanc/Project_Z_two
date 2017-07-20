@@ -47,18 +47,18 @@ public class MonsterPartolAct : BTActionNode
 
         if (Time.timeSinceLevelLoad >= nextSeekTime && wd.dyAgent.Target == null)
         {
-            List<BaseEntity> players = EntityMgr.Instance.getEntityByType(EntityType.player);
-            if (players != null && players.Count > 0)
-            {
-                for (int i = 0; i < players.Count; i++)
-                {
-                    if (Vector3.Distance(players[i].CacheTrans.position, wd.dyAgent.CacheTrans.position) <= wd.seekRange)
-                    {
-                        wd.dyAgent.Target = players[i];
-                        return ActionStatus.finished;
-                    }
-                }
-            }
+            //List<BaseEntity> players = EntityMgr.Instance.getEntityByType(EntityType.player);
+            //if (players != null && players.Count > 0)
+            //{
+            //    for (int i = 0; i < players.Count; i++)
+            //    {
+            //        if (Vector3.Distance(players[i].CacheTrans.position, wd.dyAgent.CacheTrans.position) <= wd.seekRange)
+            //        {
+            //            wd.dyAgent.Target = players[i];
+            //            return ActionStatus.finished;
+            //        }
+            //    }
+            //}
             nextSeekTime = wd.seekTime + Time.timeSinceLevelLoad;
         }
 

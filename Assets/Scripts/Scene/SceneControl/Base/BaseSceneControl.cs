@@ -31,18 +31,16 @@ public class BaseSceneControl : MonoBehaviour
     }
 
     //创建玩家
-    protected void createEntityPlayer()
+    protected virtual void createEntityPlayer()
     {
-        EntityMgr.Instance.createEntity(1008611, 1008611,()=> {
-            Message msg = new Message(MsgCmd.Open_MainPlayer_UI, this);
-            msg.Send();
-            Message msg2 = new Message(MsgCmd.Open_Skill_UI, this);
-            msg2.Send();
-            Message msg3 = new Message(MsgCmd.Open_JoyStick_UI, this);
-            msg3.Send();
-            Message msg4 = new Message(MsgCmd.Open_FuncMenu_UI, this);
-            msg4.Send();
-        });
+        //Message msg = new Message(MsgCmd.Open_MainPlayer_UI, this);
+        //msg.Send();
+        //Message msg2 = new Message(MsgCmd.Open_Skill_UI, this);
+        //msg2.Send();
+        //Message msg3 = new Message(MsgCmd.Open_JoyStick_UI, this);
+        //msg3.Send();
+        //Message msg4 = new Message(MsgCmd.Open_FuncMenu_UI, this);
+        //msg4.Send();
     }
     //创建水晶
     protected IEnumerator createEntityCrystal(float timer)

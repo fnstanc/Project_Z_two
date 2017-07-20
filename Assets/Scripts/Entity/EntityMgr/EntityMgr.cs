@@ -27,34 +27,51 @@ public class EntityInfo
 
 public class EntityMgr : Singleton<EntityMgr>
 {
-    //实体静态数据
-    private Dictionary<int, EntityInfo> dictInfo = null;
     //实体管理列表
     private Dictionary<int, BaseEntity> dictEntityById = null;
     private Dictionary<EntityType, List<BaseEntity>> dictEntityByType = null;
+    //主角
+    public int MainPlayerId = -1;
 
     public override void init()
     {
         dictEntityById = new Dictionary<int, BaseEntity>();
         dictEntityByType = new Dictionary<EntityType, List<BaseEntity>>();
-        dictInfo = new Dictionary<int, EntityInfo>();
-        loadStaticData();
     }
+    #region 创建实体相关2.0
+    public void createEntity<T>(int tempId, int uid, Action loadFinished = null) where T : BaseEntity
+    {
+        EntityInfo data = getInfo(tempId);
+        if (data == null) return;
+        data.UID = uid;
+        onCreate<T>(data, loadFinished);
+    }
+    private void onCreate<T>(EntityInfo data, Action loadFinished) where T : BaseEntity
+    {
+        AssetInfo info = new AssetInfo(data.Path, resPre + data.Path, stPre + data.Path + ".assetbundle");
+        ResMgr.Instance.load(info, (obj) =>
+        {
+            GameObject go = obj as GameObject;
+            go.name = data.UID.ToString();
+            BaseEntity be = go.GetComponent<BaseEntity>();
+            if (be == null)
+            {
+                be = go.AddComponent<T>() as BaseEntity;
+            }
+            be.onCreate(data);
+            this.addEntity(be);
+            if (loadFinished != null) loadFinished();
+        }, null, LoadType.coroutine);
+    }
+    #endregion
 
-
+    #region 创建实体相关1.0
     //创建entity
     public void createEntity(int tempId, int uid, Action loadFinished = null)
     {
-        EntityInfo data = null;
-        if (dictInfo.ContainsKey(tempId))
-        {
-            data = dictInfo[tempId];
-            data.UID = uid;
-        }
-        if (data == null)
-        {
-            return;
-        }
+        EntityInfo data = getInfo(tempId);
+        if (data == null) return;
+        data.UID = uid;
         onCreate(data, loadFinished);
     }
     private string resPre = "Entity/";
@@ -76,6 +93,7 @@ public class EntityMgr : Singleton<EntityMgr>
          }, null, LoadType.coroutine);
     }
 
+
     private Type getType(EntityType type)
     {
         Type t = null;
@@ -93,6 +111,8 @@ public class EntityMgr : Singleton<EntityMgr>
         }
         return t;
     }
+    #endregion
+
     //添加entity
     public void addEntity(BaseEntity entity)
     {
@@ -128,19 +148,6 @@ public class EntityMgr : Singleton<EntityMgr>
         }
         EntityType type = entity.EType;
         GameObject.DestroyObject(entity.CacheObj);
-        switch (type)
-        {
-            case EntityType.player:
-                break;
-            case EntityType.monster:
-                Message Die_Monster_Entity = new Message(MsgCmd.Die_Monster_Entity, this);
-                Die_Monster_Entity.Send();
-                break;
-            case EntityType.staticActor:
-                Message Die_Crystal_Entity = new Message(MsgCmd.Die_Crystal_Entity, this);
-                Die_Crystal_Entity.Send();
-                break;
-        }
     }
     //移除entity by type
     public void removeEntityByType(EntityType type)
@@ -198,7 +205,7 @@ public class EntityMgr : Singleton<EntityMgr>
     //获取主角
     public BaseEntity getMainPlayer()
     {
-        return getEntityById(1008611);
+        return getEntityById(MainPlayerId);
     }
     //是否是猪脚
     public bool isMainPlayer(BaseEntity entity)
@@ -211,28 +218,31 @@ public class EntityMgr : Singleton<EntityMgr>
     }
 
     //加载静态数据
-    private void loadStaticData()
+    private EntityInfo getInfo(int tempId)
     {
+        EntityInfo data = new EntityInfo();
         ModelConfigConfig[] confs = ModelConfigConfig.GetValues();
         for (int i = 0; i < confs.Length; i++)
         {
-            EntityInfo data = new EntityInfo();
-            data.TempId = confs[i].tempId;
-            data.Name = confs[i].name;
-            data.Type = (EntityType)confs[i].type;
-            data.SonType = (EntitySonType)confs[i].sonType;
-            data.Path = confs[i].loadPath;
-            data.HP = confs[i].hp;
-            data.NameHeight = confs[i].nameHeight;
-            //出生点
-            data.SpawnPos = ConfigUtils.getVector3(confs[i].spawnPos);
-            //技能
-            data.Skills.AddRange(ConfigUtils.getIntLst(confs[i].skills));
-            //combo
-            data.comboSkills.AddRange(ConfigUtils.getIntLst(confs[i].comboSkills));
-            data.workingDataId = confs[i].wdID;
-            dictInfo.Add(confs[i].tempId, data);
+            if (confs[i].tempId == tempId)
+            {
+                data.TempId = confs[i].tempId;
+                data.Name = confs[i].name;
+                data.Type = (EntityType)confs[i].type;
+                data.SonType = (EntitySonType)confs[i].sonType;
+                data.Path = confs[i].loadPath;
+                data.HP = confs[i].hp;
+                data.NameHeight = confs[i].nameHeight;
+                //出生点
+                data.SpawnPos = ConfigUtils.getVector3(confs[i].spawnPos);
+                //技能
+                data.Skills.AddRange(ConfigUtils.getIntLst(confs[i].skills));
+                //combo
+                data.comboSkills.AddRange(ConfigUtils.getIntLst(confs[i].comboSkills));
+                data.workingDataId = confs[i].wdID;
+            }
         }
+        return data;
     }
-}
 
+}

@@ -1,29 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class AppMain : MonoBehaviour
 {
+
+    private List<BaseControl> controls = null;
+    private ClientSocket client = null;
+
     private void Awake()
     {
         init();
-        //初始化所有监听
-        SerializableSet set = ResMgr.Instance.loadResByType<SerializableSet>("SerializableSet");
-        Deserializer.Deserialize(set);        
+        addControl();
+        MonoBehaviour.DontDestroyOnLoad(this.gameObject);
+        createSocket();
     }
 
-
-    private void Start()
+    private void createSocket()
     {
-        SceneMgr.Instance.onLoadScene("Test", null, (progress) =>
-        {
-            DDOLCanvas.Instance.setFill(progress);
-        }, true);
+        client = new ClientSocket();
+        client.clientSendMsg(Encoding.UTF8.GetBytes("10000"));
     }
 
+
+    private void addControl()
+    {
+        //初始化客户端所有control初始化(监听)
+        controls = new List<BaseControl>();
+        controls.Add(new WeaponSystemControl());
+        //controls.Add(new MainMeunControl());
+        controls.Add(new SkillUIControl());
+        controls.Add(new MainPlayerControl());
+        controls.Add(new JoyStickControl());
+        controls.Add(new FuncMenuControl());
+        controls.Add(new KnapsackControl());
+        controls.Add(new SkillDetailControl());
+        controls.Add(new DamageTipsControl());
+        initControl();
+    }
+
+    //初始化control监听
+    private void initControl()
+    {
+        for (int i = 0; i < controls.Count; i++)
+        {
+            controls[i].initListener();
+            controls[i].initEnum();
+        }
+    }
 
     private void init()
     {
+        SerializableSet set = ResMgr.Instance.loadResByType<SerializableSet>("SerializableSet");
+        Deserializer.Deserialize(set);
         GameObject go = GameObject.Find("DDOLObj");
         if (go == null)
         {
@@ -45,6 +75,12 @@ public class AppMain : MonoBehaviour
                 load.AddComponent<DDOLCanvas>();
             }
         }
+    }
+
+
+    private void OnApplicationQuit()
+    {
+        this.client.closeSocket();
     }
 
 }

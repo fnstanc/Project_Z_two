@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MainPlayerUI : BaseUI
 {
@@ -13,6 +14,7 @@ public class MainPlayerUI : BaseUI
     private GameObject targetPanel;
     private Image targetIcon;
     private Image targetBlood;
+    private Image targetBloodDrop;
     private float targetOrgHp = -1;
 
     public override void resetUIInfo()
@@ -27,6 +29,7 @@ public class MainPlayerUI : BaseUI
         targetPanel = this.CacheTrans.Find("TargetPanel").gameObject;
         targetIcon = this.CacheTrans.Find("TargetPanel/targetIcon").GetComponent<Image>();
         targetBlood = this.CacheTrans.Find("TargetPanel/bloodBG/blood").GetComponent<Image>();
+        targetBloodDrop = this.CacheTrans.Find("TargetPanel/bloodBG/bloodDrop").GetComponent<Image>();
     }
 
     public override void onActive()
@@ -84,7 +87,9 @@ public class MainPlayerUI : BaseUI
     //当目标血条改变
     private void onTargetBloodChange(object val)
     {
-        targetBlood.fillAmount = float.Parse(val.ToString()) / targetOrgHp;
+        float endFill = float.Parse(val.ToString()) / targetOrgHp;
+        targetBlood.fillAmount = endFill;
+        targetBloodDrop.DOFillAmount(endFill, 0.5f);
     }
 
 

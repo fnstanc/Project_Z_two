@@ -55,6 +55,10 @@ public class SceneMgr : Singleton<SceneMgr>
         {
             SceneManager.LoadScene(name);
             onSceneLoadFinished(name);
+            if (loaded != null)
+            {
+                loaded(name);
+            }
             yield break;
         }
         else

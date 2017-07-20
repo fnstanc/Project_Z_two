@@ -177,11 +177,12 @@
     <Compile Include="Assets\Scripts\Entity\EntityMgr\EntityUtils.cs" />
     <Compile Include="Assets\Scripts\Entity\EntityParts\BasePart\EntityBasePart.cs" />
     <Compile Include="Assets\Scripts\Entity\EntityParts\BasePart\EntityPartMgr.cs" />
-    <Compile Include="Assets\Scripts\Entity\EntityParts\Parts\EntityWeaponPart.cs" />
     <Compile Include="Assets\Scripts\Entity\EntityParts\PartWidget\EntityPartWidget.cs" />
+    <Compile Include="Assets\Scripts\Entity\EntityParts\Parts\EntityWeaponPart.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityCrystal.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMainPlayer.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMonster.cs" />
+    <Compile Include="Assets\Scripts\Entity\Entitys\EntityNetPlayer.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\ISkill.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\GameHelper\AttackHelper\AttackHelper.cs" />
@@ -253,7 +254,8 @@
     <Compile Include="Assets\Scripts\Scene\SceneMgr\SceneMgr.cs" />
     <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\Singleton\TestDel.cs" />
-    <Compile Include="Assets\Scripts\Socket\ClientSocket.cs" />
+    <Compile Include="Assets\Scripts\Socket\ClientSocket\ClientSocket.cs" />
+    <Compile Include="Assets\Scripts\Socket\Const\NetCmd.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\BillBoardPart\Base\BasePart.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\BillBoardPart\Parts\BloodPart.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\BillBoardPart\Parts\CrystalBloodPart.cs" />
@@ -304,7 +306,6 @@
     <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
     <None Include="Assets\Res\XWeaponTrail\readme.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class DDOLObj : MonoBehaviour
 {
     public static DDOLObj Instance;
-    private List<BaseControl> controls = null;
 
     private void Awake()
     {
@@ -22,47 +21,23 @@ public class DDOLObj : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        //模拟服务器启动
-        ServerTest.Instance.initServer();
-        //初始化客户端所有control初始化(监听)
-        controls = new List<BaseControl>();
-        controls.Add(new WeaponSystemControl());
-        //controls.Add(new MainMeunControl());
-        controls.Add(new SkillUIControl());
-        controls.Add(new MainPlayerControl());
-        controls.Add(new JoyStickControl());
-        controls.Add(new FuncMenuControl());
-        controls.Add(new KnapsackControl());
-        controls.Add(new SkillDetailControl());
-        controls.Add(new DamageTipsControl());
-        initControl();
-    }
-
-
+    public Queue<string> msgs = new Queue<string>();
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (msgs.Count > 0)
         {
-            DamageData dt = new DamageData();
-            dt.damage = UnityEngine.Random.Range(1, 100);
-            dt.targetId = 1008611;
-            Message msg = new Message(MsgCmd.On_Take_Damage, this);
-            msg["data"] = dt;
-            msg.Send();
+            string msg = msgs.Dequeue();
+            string[] lst = msg.Split(',');
+            //0协议号        //1 playerid 没有是-1   2 3参数
+            int proId = int.Parse(lst[0]);
+            NetCmd cmd = (NetCmd)proId;
+            Message netMsg = new Message(cmd.ToString(), this);
+            netMsg["msg"] = msg;
+            netMsg.Send();
         }
     }
 
-    //初始化control监听
-    private void initControl()
-    {
-        for (int i = 0; i < controls.Count; i++)
-        {
-            controls[i].initListener();
-            controls[i].initEnum();
-        }
-    }
+
 
 
 }

@@ -43,27 +43,27 @@ public class DamageTipsItemUI : BaseUI
     {
         resetItem();
         this.DamageText.gameObject.SetActive(true);
-        this.CacheTrans.DOScale(Vector3.one, 0.15f).OnComplete(() =>
-        {
-            this.CacheTrans.DOMove(endPoint, 0.35f).OnComplete(() =>
-            {
-                if (this.parentUI != null)
-                {
-                    DamageTipsUI ui = this.parentUI as DamageTipsUI;
-                    ui.showNext();
-                }
-                this.DamageText.DOFade(0, 0.15f).SetDelay(0.5f).OnComplete(() =>
-                {
-                    resetItem();
-                    if (this.parentUI != null)
-                    {
-                        DamageTipsUI ui = this.parentUI as DamageTipsUI;
-                        ui.cacheItem(this);
-                        ui.checkQueue(this.index);
-                    }
-                });
-            });
-        });
+        this.CacheTrans.DOScale(Vector3.one , 0.15f).OnComplete(() =>
+          {
+              this.CacheTrans.DOMove(endPoint, 0.3f).OnComplete(() =>
+              {
+                  if (this.parentUI != null)
+                  {
+                      DamageTipsUI ui = this.parentUI as DamageTipsUI;
+                      ui.showNext();
+                  }
+                  this.DamageText.DOFade(0, 0.15f).SetDelay(0.5f).OnComplete(() =>
+                  {
+                      resetItem();
+                      if (this.parentUI != null)
+                      {
+                          DamageTipsUI ui = this.parentUI as DamageTipsUI;
+                          ui.cacheItem(this);
+                          ui.checkQueue(this.index);
+                      }
+                  });
+              });
+          });
 
     }
 

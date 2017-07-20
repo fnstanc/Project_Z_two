@@ -87,7 +87,7 @@ public class PlayerBaseComboState : PlayerSkillState
 
     private void checkTarget()
     {
-        BaseEntity target = EntityUtils.getCanAttackEntity(this.dyAgent, EntityType.monster, maxMoveDis + atkRange);
+        BaseEntity target = EntityUtils.getCanAttackEntity(this.dyAgent, EntityType.player, maxMoveDis + atkRange);
         if (target != null)
         {
             this.dyAgent.Target = target;

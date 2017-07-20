@@ -4,13 +4,8 @@ using UnityEngine;
 using Xft;
 //using VRTK;
 
-public class EntityMainPlayer : EntityDynamicActor
+public class EntityMainPlayer : EntityNetPlayer
 {
-    [SerializeField]
-    private float moveSpeed = 0.1f;
-
-
-
 
     public override void onStart()
     {
@@ -19,7 +14,7 @@ public class EntityMainPlayer : EntityDynamicActor
         resetCamera();
     }
 
-    private void resetCamera()
+    public override void resetCamera()
     {
         Camera main = Camera.main;
         if (main == null)
