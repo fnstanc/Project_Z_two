@@ -23,5 +23,20 @@ public class UIUtils
         return Screen.height;
     }
 
+    public static void addCommonBg(BaseUI baseUI)
+    {
+        GameObject bg = ResMgr.Instance.load("UI/AnimBG") as GameObject;
+        if (bg != null)
+        {
+            bg.transform.SetParent(baseUI.CacheTrans);
+            bg.transform.localPosition = Vector3.zero;
+            bg.transform.localScale = Vector3.one;
+            bg.transform.SetSiblingIndex(0);
+
+            UIEventTrigger listener = bg.AddComponent<UIEventTrigger>();
+            listener.setClickHandler(baseUI.closeSelfUI);
+        }
+    }
+
 }
 

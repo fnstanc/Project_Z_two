@@ -18,7 +18,7 @@ public class KnapsackUI : BaseUI
     public override void onStart()
     {
 
-
+        UIUtils.addCommonBg(this);
     }
 
 

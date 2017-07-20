@@ -136,7 +136,7 @@ public abstract class BaseUI : MonoBehaviour
         this.parentUI = ui;
     }
     //closeSelf
-    protected void closeSelfUI()
+    public void closeSelfUI()
     {
         UIMgr.Instance.closeUI(this.uiEnum);
     }

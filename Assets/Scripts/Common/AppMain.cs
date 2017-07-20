@@ -19,8 +19,16 @@ public class AppMain : MonoBehaviour
 
     private void createSocket()
     {
-        client = new ClientSocket();
-        client.clientSendMsg(Encoding.UTF8.GetBytes("10000"));
+
+        //有服务器
+        //client = new ClientSocket();
+        //client.clientSendMsg(Encoding.UTF8.GetBytes("10000"));
+
+        //如果没有服务器 请使用这里
+        Message netMsg = new Message(NetCmd.onReqsRoleData.ToString(), this);
+        // 1 协议号  2 uid  3 tempid
+        netMsg["msg"] = "10000,398273289,1008611";
+        netMsg.Send();
     }
 
 
