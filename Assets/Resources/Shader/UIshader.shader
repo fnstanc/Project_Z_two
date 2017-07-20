@@ -57,6 +57,7 @@ Shader "Tang/animUI"
 #include "UnityUI.cginc"
 
 #pragma multi_compile __ UNITY_UI_ALPHACLIP
+#define PI  3.1415926
 
 		struct appdata_t
 	{
@@ -97,9 +98,13 @@ Shader "Tang/animUI"
 
 	fixed4 frag(v2f IN) : SV_Target
 	{
+		//UV动画 Y轴运动 Alpha 0-1-0循环
 		float2 uv = IN.texcoord;
 		uv += float2(1, _Time.y/5);
-		half4 color = (tex2D(_MainTex, uv) + _TextureSampleAdd) * IN.color;
+		fixed4 col = IN.color;
+		float val = sin(_Time.y % PI);
+		col.w = val;
+		half4 color = (tex2D(_MainTex, uv) + _TextureSampleAdd) * col;
 
 		color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 
