@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CommonBgType
+{
+    AnimBG_Rain,
+    AnimBG_Star,
+}
+
 public class UIUtils
 {
     public static GameObject cloneObj(GameObject go)
@@ -23,9 +29,9 @@ public class UIUtils
         return Screen.height;
     }
 
-    public static void addCommonBg(BaseUI baseUI)
+    public static void addCommonBg(BaseUI baseUI, CommonBgType type = CommonBgType.AnimBG_Star)
     {
-        GameObject bg = ResMgr.Instance.load("UI/AnimBG") as GameObject;
+        GameObject bg = ResMgr.Instance.load("UI/" + type.ToString()) as GameObject;
         if (bg != null)
         {
             bg.transform.SetParent(baseUI.CacheTrans);

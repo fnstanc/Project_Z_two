@@ -1,6 +1,6 @@
 ﻿// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-Shader "Tang/animUI"
+Shader "Tang/UIStar"
 {
 	Properties
 	{
@@ -14,6 +14,11 @@ Shader "Tang/animUI"
 		_StencilReadMask("Stencil Read Mask", Float) = 255
 
 		_ColorMask("Color Mask", Float) = 15
+
+		//my member
+		_StartTime("_StartTime",Float) = 0
+		_NowTime("_NowTime", Float) = 0
+		_LifeTime("_LifeTime", Float) = 0
 
 		[Toggle(UNITY_UI_ALPHACLIP)] _UseUIAlphaClip("Use Alpha Clip", Float) = 0
 	}
@@ -79,6 +84,9 @@ Shader "Tang/animUI"
 	fixed4 _Color;
 	fixed4 _TextureSampleAdd;
 	float4 _ClipRect;
+	float _NowTime;
+	float _StartTime;
+	float _LifeTime;
 
 	v2f vert(appdata_t IN)
 	{
@@ -98,24 +106,37 @@ Shader "Tang/animUI"
 
 	fixed4 frag(v2f IN) : SV_Target
 	{
-		//UV动画 Y轴运动 Alpha 0-1-0循环
 		float2 uv = IN.texcoord;
-		uv += float2(1, _Time.y/5);
 		fixed4 col = IN.color;
 		float val = sin(_Time.y % PI);
-		val = clamp(val, 0.3, 1);
-		col.w = val;
+		if (uv.x > 0.75||uv.y<0.25)
+			col.w = sin(_Time.y /1.5% PI);
+		else if (uv.x > 0.5)
+			col.w = sin(_Time.y / 2 % PI);
+		else if (uv.x > 0.25)
+			col.w = sin(_Time.y / 3 % PI);
+		else
+			col.w = sin(_Time.y / 2 % PI);
+
+		//UV切成X * Y份  随机选择3份 0-0.25-0.5-0.75-1
+		// 2 x=0.25 -0.5  y =0-0.25   15 x= 0.5-0.75   y= 0.75-1
+		// x = n %4 = z    min   max-0.25  z*0.25 max
+	   //y =floor( n /5 ) = z min*0.25  z max = z+0.25 
+	   // 2%4 = 2  max = 0.5 min 0.25 
+	  //  15%4 =3  max = 0.75 min 0.5
+
+
 		half4 color = (tex2D(_MainTex, uv) + _TextureSampleAdd) * col;
 
 		color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 
-#ifdef UNITY_UI_ALPHACLIP
-		clip(color.a - 0.001);
-#endif
+  #ifdef UNITY_UI_ALPHACLIP
+		  clip(color.a - 0.001);
+  #endif
 
-		return color;
-	}
-		ENDCG
-	}
+		  return color;
+	  }
+		  ENDCG
+	  }
 	}
 }

@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -238,7 +240,6 @@
     <Compile Include="Assets\Scripts\Modulus\UIBase\BaseUI\UIEventTrigger.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\Mgr\UIMgr.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\UIUtils\UIUtils.cs" />
-    <Compile Include="Assets\Scripts\Modulus\UIBase\Z_Server\ServerTest.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Control\WeaponSystemControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Data\WeaponSysItemData.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Data\WeaponSystemData.cs" />
@@ -303,6 +304,8 @@
     <None Include="Assets\Res\XWeaponTrail\Model\readme.txt" />
     <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
     <None Include="Assets\Res\XWeaponTrail\readme.txt" />
+    <None Include="Assets\Resources\Shader\UIBreathe.shader" />
+    <None Include="Assets\Resources\Shader\UIStar.shader" />
     <None Include="Assets\Resources\Shader\UIshader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

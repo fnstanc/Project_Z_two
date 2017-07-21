@@ -95,7 +95,7 @@ public class PlayerSkillState : FSMState
         switch (type)
         {
             case SkillType.normal://普通技能 距离 水平角度  垂直角度 //AOI管理实体视野周围的所有实体 方便获取一定范围内的实体 这里直接拿所有实体
-                List<BaseEntity> targetLst = EntityMgr.Instance.getEntityByType(EntityType.player);
+                List<BaseEntity> targetLst = EntityMgr.Instance.getEntityByType(EntityType.monster);
                 AttackInfo info = new AttackInfo(skillData.atkRange, skillData.horAngle, skillData.verAngle);
                 if (targetLst != null && targetLst.Count > 0)
                 {

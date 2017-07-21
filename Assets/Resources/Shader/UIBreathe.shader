@@ -100,10 +100,9 @@ Shader "Tang/animUI"
 	{
 		//UV动画 Y轴运动 Alpha 0-1-0循环
 		float2 uv = IN.texcoord;
-		uv += float2(1, _Time.y/5);
 		fixed4 col = IN.color;
-		float val = sin(_Time.y % PI);
-		val = clamp(val, 0.3, 1);
+		float val = sin(_Time.y/4 % PI);
+		val = clamp(val,0.6, 1);
 		col.w = val;
 		half4 color = (tex2D(_MainTex, uv) + _TextureSampleAdd) * col;
 
