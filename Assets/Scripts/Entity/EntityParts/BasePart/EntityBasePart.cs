@@ -16,7 +16,8 @@ public class EntityBasePart
     //初始化
     public virtual void initPart()
     {
-        partObj = this.agent.CacheTrans.Find(partNode).gameObject;
+        if (this.agent.CacheTrans.Find(partNode) != null)
+            partObj = this.agent.CacheTrans.Find(partNode).gameObject;
     }
 
     public GameObject getPartObj()

@@ -25,7 +25,7 @@ public class MainPlayerUI : BaseUI
 
     public override void onStart()
     {
-        headIcon = this.CacheTrans.Find("HeadPanel/headIcon").GetComponent<Image>();
+        headIcon = this.CacheTrans.Find("HeadPanel/frame/headIcon").GetComponent<Image>();
         targetPanel = this.CacheTrans.Find("TargetPanel").gameObject;
         targetIcon = this.CacheTrans.Find("TargetPanel/targetIcon").GetComponent<Image>();
         targetBlood = this.CacheTrans.Find("TargetPanel/bloodBG/blood").GetComponent<Image>();

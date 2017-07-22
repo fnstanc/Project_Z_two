@@ -96,7 +96,8 @@ public class EntityMainPlayer : EntityNetPlayer
         if (trail == null)
         {
             GameObject weapon = this.getPartObj(EntityPartType.weapon);
-            trail = weapon.GetComponent<XWeaponTrail>();
+            if (weapon != null)
+                trail = weapon.GetComponent<XWeaponTrail>();
         }
 
         if (trail != null)
