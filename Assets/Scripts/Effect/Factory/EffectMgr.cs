@@ -8,6 +8,7 @@ public enum EffectType
     normal,
     pickUp,
     shadow,
+    waitToDispose,
 }
 
 public class EffectInfo
@@ -50,7 +51,6 @@ public class EffectInfo
 public class EffectMgr : Singleton<EffectMgr>
 {
     private Dictionary<int, BaseEffect> createdEff = null;
-    private int count = 1;
     public override void init()
     {
         base.init();
@@ -66,8 +66,10 @@ public class EffectMgr : Singleton<EffectMgr>
     public int createEffect(int effId, EffectInfo info)
     {
         EffectConfigConfig config = EffectConfigConfig.Get(effId);
+        int uid = -1;
         if (config != null)
         {
+            uid = MathUtils.get32UID();
             info.config = config;
             GameObject cacheGo = PoolMgr.Instance.getObj(config.tempId + config.path);
             if (cacheGo == null)
@@ -76,11 +78,10 @@ public class EffectMgr : Singleton<EffectMgr>
                   {
                       GameObject go = obj as GameObject;
                       BaseEffect be = go.AddComponent(getType((EffectType)config.effectType)) as BaseEffect;
-                      be.id = count;
+                      be.id = uid;
                       be.setInfo(info);
-                      count++;
-                      if (!createdEff.ContainsKey(count))
-                          createdEff.Add(count, be);
+                      if (!createdEff.ContainsKey(uid))
+                          createdEff.Add(uid, be);
                   });
             }
             else
@@ -90,11 +91,11 @@ public class EffectMgr : Singleton<EffectMgr>
                 {
                     be.setInfo(info);
                     cacheGo.SetActive(true);
-                    count = be.id;
+                    uid = be.id;
                 }
             }
         }
-        return count;
+        return uid;
     }
 
     public void disposeEffect(int id)
@@ -119,6 +120,9 @@ public class EffectMgr : Singleton<EffectMgr>
                 break;
             case EffectType.shadow:
                 t = typeof(AfterImageEffects);
+                break;
+            case EffectType.waitToDispose:
+                t = typeof(WaitToDisposeEffect);
                 break;
         }
         return t;

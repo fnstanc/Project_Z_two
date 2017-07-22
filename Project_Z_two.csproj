@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -165,6 +167,7 @@
     <Compile Include="Assets\Scripts\Effect\Effects\BaseEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects\NormalEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\Effects\PickUpEffect.cs" />
+    <Compile Include="Assets\Scripts\Effect\Effects\WaitToDisposeEffect.cs" />
     <Compile Include="Assets\Scripts\Effect\Factory\EffectMgr.cs" />
     <Compile Include="Assets\Scripts\Entity\Base\BaseEntity.cs" />
     <Compile Include="Assets\Scripts\Entity\Base\EntityDynamicActor.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="Assets\Scripts\GameHelper\Camera\StaticCamera.cs" />
     <Compile Include="Assets\Scripts\GameHelper\ColorUtils\ColorUtils.cs" />
     <Compile Include="Assets\Scripts\GameHelper\ConfigUtils\ConfigUtils.cs" />
+    <Compile Include="Assets\Scripts\GameHelper\MathUtils\MathUtils.cs" />
     <Compile Include="Assets\Scripts\Mgr\AudioMgr\AudioMgr.cs" />
     <Compile Include="Assets\Scripts\Mgr\MsgCenter\Message.cs" />
     <Compile Include="Assets\Scripts\Mgr\MsgCenter\MessageCenter.cs" />
@@ -296,6 +300,9 @@
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Plugins\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\ParticleAdd.shader" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\ParticleAddNoSmooth.shader" />
     <None Include="Assets\Res\Blood\Shaders\Blood.shader" />
     <None Include="Assets\Res\Blood\Shaders\BloodNoSmooth.shader" />
     <None Include="Assets\Res\Material\mat.shader" />

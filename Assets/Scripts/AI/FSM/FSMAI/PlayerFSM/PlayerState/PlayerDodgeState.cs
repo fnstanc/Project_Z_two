@@ -47,6 +47,7 @@ public class PlayerDodgeState : FSMState
         if (effectId != -1)
         {
             EffectMgr.Instance.disposeEffect(effectId);
+            Debug.Log("释放effect");
         }
     }
 

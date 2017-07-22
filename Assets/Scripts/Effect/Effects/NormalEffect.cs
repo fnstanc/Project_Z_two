@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NormalEffect : BaseEffect
 {
-    private double orgTime;
-    public double lifeTime;
-    private bool isSetInfo = false;
+    protected float orgTime;
+    public float lifeTime;
+    protected bool isSetInfo = false;
 
     public override void onUpdate()
     {

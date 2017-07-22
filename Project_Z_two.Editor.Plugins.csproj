@@ -179,6 +179,9 @@
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <None Include="Assets\Plugins\Demigiant\readme_DOTweenPro.txt" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\AlphaBlended.shader" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\ParticleAdd.shader" />
+    <None Include="Assets\Realistic Effects Pack\Shaders\ParticleAddNoSmooth.shader" />
     <None Include="Assets\Res\Blood\Shaders\Blood.shader" />
     <None Include="Assets\Res\Blood\Shaders\BloodNoSmooth.shader" />
     <None Include="Assets\Res\Material\mat.shader" />
