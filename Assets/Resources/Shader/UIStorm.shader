@@ -106,7 +106,7 @@ Shader "Tang/UIStorm"
 		//{y'} = { sina   cosa} {y}
 		//{cosa*x-sina*y}
 		//{sina*x +cosa*y}		
-		float angle = _Time.x % 360;
+		float angle = _Time.y % 360;
 		uv = float2((cos(angle)*uv.x - sin(angle)*uv.y), (sin(angle)*uv.x + cos(angle)*uv.y));
 		uv += float2(0.5, 0.5);
 
