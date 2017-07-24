@@ -47,6 +47,7 @@ public class SkillItemUI : BaseUI
     private void onCastSkillSuccess(Message msg)
     {
         int skillId = (int)msg["skillId"];
+        Debug.Log("onCastSkillSuccess(Message msg)");
         SkillItemUIData dt = this.data as SkillItemUIData;
         if (dt != null && skillId == dt.skillID)
         {

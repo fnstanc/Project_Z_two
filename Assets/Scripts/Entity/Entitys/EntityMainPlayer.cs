@@ -72,7 +72,7 @@ public class EntityMainPlayer : EntityNetPlayer
         angle = dir.x < 0 ? 360 - angle : angle;
         rot = Quaternion.Euler(0, angle, 0);
         this.CacheTrans.rotation = Quaternion.Lerp(this.CacheTrans.rotation, rot, 0.5f);
-        CC.Move(dir * moveSpeed);
+        this.moveTo(dir);
     }
 
     public override void onChangeDir(Quaternion rot, float t)
@@ -107,6 +107,26 @@ public class EntityMainPlayer : EntityNetPlayer
             else
                 trail.Deactivate();
         }
+    }
+
+    float timer = 0.2f;
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        //timer -= Time.deltaTime;
+        //if (timer <= 0)
+        //{
+        //    SyncHelper.syncPos(this.UID, this.CacheTrans.position.x, this.CacheTrans.position.y, this.CacheTrans.position.z);
+        //    timer = 0.2f;
+        //}
+    }
+
+    public override void onReleaseSkillSuccess(int skillId)
+    {
+        Message msg = new Message(MsgCmd.On_Skill_Release_Success, this);
+        msg["skillId"] = skillId;
+        msg.Send();
+        SyncHelper.syncSkill(this.UID, skillId);
     }
 
 }

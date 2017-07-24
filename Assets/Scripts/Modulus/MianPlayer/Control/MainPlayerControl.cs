@@ -17,6 +17,10 @@ public class MainPlayerControl : BaseControl
         //当接受到玩家信息netmsg
         MessageCenter.Instance.addListener(NetCmd.onReqsRoleData.ToString(), createMainPlayer);
         MessageCenter.Instance.addListener(NetCmd.onReqsNetRoleData.ToString(), createNetPlayer);
+        //玩家移动
+        MessageCenter.Instance.addListener(NetCmd.onReqsSyncPos.ToString(), onSyncRolePos);
+        //玩家释放技能
+        MessageCenter.Instance.addListener(NetCmd.onReqsRoleCastSkill.ToString(), onSyncRoleSkill);
     }
 
     private void onOpenUI(Message msg)
@@ -59,7 +63,7 @@ public class MainPlayerControl : BaseControl
         for (int i = 0; i < lst.Length; i++)
         {
             netPlayers.Enqueue(lst[i]);
-        }       
+        }
         if (EntityMgr.Instance.getMainPlayer() != null)
         {
             onCreateNetPlayer();
@@ -76,6 +80,19 @@ public class MainPlayerControl : BaseControl
             int tempid = int.Parse(lst[2]);
             EntityMgr.Instance.createEntity<EntityNetPlayer>(tempid, uid);
         }
+    }
+
+
+
+    private void onSyncRolePos(Message msg)
+    {
+        string netMsg = msg["msg"].ToString();
+        SyncHelper.onSyncPos(netMsg);
+    }
+    private void onSyncRoleSkill(Message msg)
+    {
+        string netMsg = msg["msg"].ToString();
+        SyncHelper.onSyncSkill(netMsg);
     }
 
 }

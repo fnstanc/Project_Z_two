@@ -7,7 +7,7 @@ public class AppMain : MonoBehaviour
 {
 
     private List<BaseControl> controls = null;
-    private ClientSocket client = null;
+    public static ClientSocket client = null;
 
     private void Awake()
     {
@@ -24,9 +24,8 @@ public class AppMain : MonoBehaviour
         //client = new ClientSocket();
         //client.clientSendMsg(Encoding.UTF8.GetBytes("10000"));
 
-        //如果没有服务器 请使用这里
+        //如果没有服务器 请使用这里     // 1 协议号  2 uid  3 tempid
         Message netMsg = new Message(NetCmd.onReqsRoleData.ToString(), this);
-        // 1 协议号  2 uid  3 tempid
         netMsg["msg"] = "10000,398273289,1008611";
         netMsg.Send();
     }
@@ -88,7 +87,7 @@ public class AppMain : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        this.client.closeSocket();
+        AppMain.client.closeSocket();
     }
 
 }

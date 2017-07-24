@@ -6,8 +6,6 @@ using Xft;
 
 public class EntityNetPlayer : EntityDynamicActor
 {
-    public float moveSpeed = 0.1f;
-
     public override void onStart()
     {
         base.onStart();
@@ -73,6 +71,8 @@ public class EntityNetPlayer : EntityDynamicActor
                 trail.Deactivate();
         }
     }
+
+
 
 }
 

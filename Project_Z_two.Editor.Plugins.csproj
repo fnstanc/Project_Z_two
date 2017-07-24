@@ -188,6 +188,7 @@
     <None Include="Assets\Res\XWeaponTrail\Model\readme.txt" />
     <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
     <None Include="Assets\Res\XWeaponTrail\readme.txt" />
+    <None Include="Assets\Resources\Shader\Skin\skin.shader" />
     <None Include="Assets\Resources\Shader\UIBreathe.shader" />
     <None Include="Assets\Resources\Shader\UIStar.shader" />
     <None Include="Assets\Resources\Shader\UIStorm.shader" />

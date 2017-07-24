@@ -5,6 +5,7 @@ using UnityEngine;
 //动态实体
 public class EntityDynamicActor : BaseEntity, ISkill
 {
+    private float moveSpeed = 4f;
     [HideInInspector]
     private Animation _anim = null;
     public Animation anim
@@ -20,7 +21,9 @@ public class EntityDynamicActor : BaseEntity, ISkill
     [HideInInspector]
     public Animator animator = null;
     [HideInInspector]
-    public CharacterController CC = null;
+    private CharacterController CC = null;
+
+    protected NavgateWidget navWidget = null;
 
     public FSM fsm = null;
     protected SkillWidget MySkill = null;
@@ -55,6 +58,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
             CC.center = new Vector3(0, this.info.NameHeight / 2, 0);
             CC.radius = 0.3f;//配置表没配
         }
+        navWidget = NavgateWidget.create(this);
     }
 
     private bool isUseG = true;
@@ -71,11 +75,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
     {
         isUseG = isUse;
     }
-    public void moveTo(Vector3 dir)
-    {
-        if (CC.enabled)
-            CC.SimpleMove(dir);
-    }
+
 
     public override void onCreate(EntityInfo data)
     {
@@ -87,6 +87,7 @@ public class EntityDynamicActor : BaseEntity, ISkill
         MySkill = new SkillWidget(this, this.Skills);
         //partWidget
         this.partWidget = EntityPartMgr.create<EntityPartWidget>(this);
+        //
     }
 
     //改变方向
@@ -122,16 +123,19 @@ public class EntityDynamicActor : BaseEntity, ISkill
             stateType = args.skillData.fsmStateType;
         }
         bool canChangeState = isCanChangeState(stateType);
-        //Debug.Log("释放技能 id == " + skillId + "   canCastSkill : " + canCastSkill + "  canChangeState : " + canChangeState);
+        // Debug.LogError("释放技能 id == " + skillId + "  stateType : " + stateType.ToString());
         if (MySkill.releaseSkill(skillId, canChangeState) && canChangeState)
         {
             onChangeState(stateType, args);
-            Message msg = new Message(MsgCmd.On_Skill_Release_Success, this);
-            msg["skillId"] = skillId;
-            msg.Send();
+            onReleaseSkillSuccess(skillId);
         }
+    }
+    public virtual void onReleaseSkillSuccess(int skillId)
+    {
 
     }
+
+
     //说话接口
     public void sayWord(string str, bool isNotRunShow = false)
     {
@@ -160,9 +164,22 @@ public class EntityDynamicActor : BaseEntity, ISkill
     }
 
     //WeaponTrail use
-    public virtual void activeWeaponTrail(bool isUse=false) {
+    public virtual void activeWeaponTrail(bool isUse = false)
+    {
 
     }
 
+    public virtual void navgateTo(Vector3 pos)
+    {
+        Vector3 dir = pos - this.CacheTrans.position;
+        if (dir.magnitude < 1) return;
+        this.navWidget.target = pos;
+        this.navWidget.isRun = true;
+    }
+    public void moveTo(Vector3 dir, bool isRunNav = false)
+    {
+        this.navWidget.isRun = isRunNav;
+        CC.SimpleMove(dir * moveSpeed);
+    }
 }
 

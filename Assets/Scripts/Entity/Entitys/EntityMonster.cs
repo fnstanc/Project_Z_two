@@ -59,13 +59,12 @@ public class EntityMonster : EntityDynamicActor
 
     private void clear()
     {
-        this.CC.enabled = false;
+
     }
 
     public override void onReSpawn()
     {
         base.onReSpawn();
-        this.CC.enabled = true;
         this.onChangeState(StateType.spawn);
     }
 

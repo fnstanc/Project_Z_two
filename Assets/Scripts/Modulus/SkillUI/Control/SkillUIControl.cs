@@ -101,7 +101,7 @@ public class SkillUIControl : BaseControl
         return dtLst;
     }
 
-    private SkillItemUIData getSkillData(int skillId)
+    public static SkillItemUIData getSkillData(int skillId)
     {
         SkillConfigConfig data = SkillConfigConfig.Get(skillId);
         SkillItemUIData info = new SkillItemUIData();
