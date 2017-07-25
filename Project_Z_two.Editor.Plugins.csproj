@@ -188,12 +188,13 @@
     <None Include="Assets\Res\XWeaponTrail\Model\readme.txt" />
     <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
     <None Include="Assets\Res\XWeaponTrail\readme.txt" />
-    <None Include="Assets\Resources\Shader\Skin\skin.shader" />
+    <None Include="Assets\Resources\Shader\ScaleAnim.shader" />
     <None Include="Assets\Resources\Shader\UIBreathe.shader" />
     <None Include="Assets\Resources\Shader\UIStar.shader" />
     <None Include="Assets\Resources\Shader\UIStorm.shader" />
     <None Include="Assets\Resources\Shader\UIshader.shader" />
     <None Include="Assets\Resources\Shader\UItest.shader" />
+    <None Include="Assets\Resources\Shader\noise\noise.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
