@@ -1,6 +1,6 @@
 ﻿// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-Shader "Tang/noise"
+Shader "Tang/noiseFog"
 {
 	Properties
 	{
@@ -106,15 +106,17 @@ Shader "Tang/noise"
 		{
 			float2 uv = IN.texcoord.xy;
 			//uv -= float2(0.5, 0.5);
-			float4 mapCol = tex2D(_NoiseMap, uv);
-			//uv += float2(0.5, 0.5);
+			float4 mapCol = tex2D(_NoiseMap, uv);			
+
+			float val = sin(_Time.x%PI);
+			val = clamp(val, 0.4, 1);
+			val = val*mapCol.x*mapCol.y*mapCol.z;
+
+			uv += float2(val, val);
+	
+			uv.x += _Time.x;
+
 			fixed4 col = IN.color;
-			mapCol.x += _Time.x*_Speed;
-			if (mapCol.x > 1)
-				col.r = -1;
-			clip(col.r);
-
-
 			half4 color = (tex2D(_MainTex, uv) + _TextureSampleAdd) * col;
 			color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 

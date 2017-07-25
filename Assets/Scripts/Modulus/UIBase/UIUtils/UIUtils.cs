@@ -6,6 +6,7 @@ public enum CommonBgType
 {
     AnimBG_Rain,
     AnimBG_Star,
+    AnimBG_Fog,
 }
 
 public class UIUtils

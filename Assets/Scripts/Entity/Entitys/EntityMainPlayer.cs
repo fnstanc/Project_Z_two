@@ -113,12 +113,12 @@ public class EntityMainPlayer : EntityNetPlayer
     public override void onUpdate()
     {
         base.onUpdate();
-        //timer -= Time.deltaTime;
-        //if (timer <= 0)
-        //{
-        //    SyncHelper.syncPos(this.UID, this.CacheTrans.position.x, this.CacheTrans.position.y, this.CacheTrans.position.z);
-        //    timer = 0.2f;
-        //}
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            SyncHelper.syncPos(this.UID, this.CacheTrans.position.x, this.CacheTrans.position.y, this.CacheTrans.position.z);
+            timer = 0.2f;
+        }
     }
 
     public override void onReleaseSkillSuccess(int skillId)

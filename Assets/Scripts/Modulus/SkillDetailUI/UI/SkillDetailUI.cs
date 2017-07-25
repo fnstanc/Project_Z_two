@@ -46,7 +46,7 @@ public class SkillDetailUI : BaseUI
         horAngle = this.CacheTrans.Find("SkillDetailContent/normalSkill/horAnglePre/horAngle").GetComponent<Text>();
         verAngle = this.CacheTrans.Find("SkillDetailContent/normalSkill/verAnglePre/verAngle").GetComponent<Text>();
         skillDamage = this.CacheTrans.Find("SkillDetailContent/normalSkill/skillDamagePre/skillDamage").GetComponent<Text>();
-        UIUtils.addCommonBg(this);
+        UIUtils.addCommonBg(this, CommonBgType.AnimBG_Fog);
     }
 
     public override void refreshUI()
