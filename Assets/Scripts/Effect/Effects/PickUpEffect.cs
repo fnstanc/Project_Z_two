@@ -16,15 +16,15 @@ public class PickUpEffect : BaseEffect
     {
         if (!isSetInfo)
             return;
-        stopTime -= Time.deltaTime;
-        if (stopTime < 0 && agent != null)
+        if (agent != null)
         {
             getPos(duration);
             duration += Time.deltaTime;
             if (duration > 1f)
             {
                 getPos(duration);
-                PoolMgr.Instance.saveObj(this.CacheObj, this.info.config.tempId + this.info.config.path);
+                //PoolMgr.Instance.saveObj(this.CacheObj, this.info.config.tempId + this.info.config.path);
+                MonoBehaviour.DestroyObject(this.gameObject);
                 duration = 0;
             }
         }
@@ -64,25 +64,11 @@ public class PickUpEffect : BaseEffect
         //计算贝塞尔曲线p2点位于p3点的偏移弧度
         if (Math.Abs(P1.x - P2.x) < Math.Abs(P1.z - P2.z))
         {
-            if (P1.x > P2.x)
-            {
-                _randomAngle = 0;
-            }
-            else
-            {
-                _randomAngle = 180;
-            }
+            _randomAngle = UnityEngine.Random.Range(0, 180);
         }
         else
         {
-            if (P0.z > P2.z)
-            {
-                _randomAngle = 90;
-            }
-            else
-            {
-                _randomAngle = 270; ;
-            }
+            _randomAngle = UnityEngine.Random.Range(180, 360);
         }
 
         //计算贝塞尔曲线p2位于p3点的距离

@@ -39,14 +39,14 @@ public class EntityMgr : Singleton<EntityMgr>
         dictEntityByType = new Dictionary<EntityType, List<BaseEntity>>();
     }
     #region 创建实体相关2.0
-    public void createEntity<T>(int tempId, int uid, Action loadFinished = null) where T : BaseEntity
+    public void createEntity<T>(int tempId, int uid, Action<BaseEntity> loadFinished = null) where T : BaseEntity
     {
         EntityInfo data = getInfo(tempId);
         if (data == null) return;
         data.UID = uid;
         onCreate<T>(data, loadFinished);
     }
-    private void onCreate<T>(EntityInfo data, Action loadFinished) where T : BaseEntity
+    private void onCreate<T>(EntityInfo data, Action<BaseEntity> loadFinished) where T : BaseEntity
     {
         AssetInfo info = new AssetInfo(data.Path, resPre + data.Path, stPre + data.Path + ".assetbundle");
         ResMgr.Instance.load(info, (obj) =>
@@ -60,7 +60,7 @@ public class EntityMgr : Singleton<EntityMgr>
             }
             be.onCreate(data);
             this.addEntity(be);
-            if (loadFinished != null) loadFinished();
+            if (loadFinished != null) loadFinished(be);
         }, null, LoadType.coroutine);
     }
     #endregion

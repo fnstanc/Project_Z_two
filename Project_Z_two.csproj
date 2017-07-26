@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -182,6 +184,7 @@
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMainPlayer.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityMonster.cs" />
     <Compile Include="Assets\Scripts\Entity\Entitys\EntityNetPlayer.cs" />
+    <Compile Include="Assets\Scripts\Entity\Entitys\Static\EntityDropCall.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\ISkill.cs" />
     <Compile Include="Assets\Scripts\Entity\Interface\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\GameHelper\AttackHelper\AttackHelper.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Assets\Scripts\Modulus\UIBase\BaseUI\UIEventTrigger.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\Mgr\UIMgr.cs" />
     <Compile Include="Assets\Scripts\Modulus\UIBase\UIUtils\UIUtils.cs" />
+    <Compile Include="Assets\Scripts\Modulus\UIBase\UnityUIExtend\PolyImage.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Control\WeaponSystemControl.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Data\WeaponSysItemData.cs" />
     <Compile Include="Assets\Scripts\Modulus\WeaponSystemUI\Data\WeaponSystemData.cs" />
@@ -263,6 +267,7 @@
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\BillBoardPart\Parts\NamePart.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\Widget\Base\BillBoardWidget.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\Widget\Widget\CrystalBillBoard.cs" />
+    <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\Widget\Widget\DropCallBillBoard.cs" />
     <Compile Include="Assets\Scripts\WIdget\BillBoardWidget\Widget\Widget\DynamicBillBoard.cs" />
     <Compile Include="Assets\Scripts\WIdget\NavgateWidget\NavgateWidget.cs" />
     <Compile Include="Assets\Scripts\WIdget\WordBubbleWidget\WordBubbleWidget.cs" />
@@ -309,14 +314,17 @@
     <None Include="Assets\Res\XWeaponTrail\Model\readme.txt" />
     <None Include="Assets\Res\XWeaponTrail\Shader\xft_displacement_screen.shader" />
     <None Include="Assets\Res\XWeaponTrail\readme.txt" />
-    <None Include="Assets\Resources\Shader\ScaleAnim.shader" />
-    <None Include="Assets\Resources\Shader\UIBreathe.shader" />
-    <None Include="Assets\Resources\Shader\UIStar.shader" />
-    <None Include="Assets\Resources\Shader\UIStorm.shader" />
-    <None Include="Assets\Resources\Shader\UIshader.shader" />
-    <None Include="Assets\Resources\Shader\UItest.shader" />
+    <None Include="Assets\Res\dropEff\Particle Add.shader" />
+    <None Include="Assets\Res\pickeff\Particle Add no fog.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\ScaleAnim.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\UIBreathe.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\UIStar.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\UIStorm.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\UIshader.shader" />
+    <None Include="Assets\Resources\Shader\UIAnimShader\UItest.shader" />
     <None Include="Assets\Resources\Shader\noise\noise.shader" />
     <None Include="Assets\Resources\Shader\noise\noiseFog.shader" />
+    <None Include="Assets\Resources\Shader\other\pickup.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

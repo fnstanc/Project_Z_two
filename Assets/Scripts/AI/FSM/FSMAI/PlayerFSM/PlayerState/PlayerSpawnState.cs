@@ -33,5 +33,10 @@ public class PlayerSpawnState : FSMState
         }
     }
 
+    public override bool isCanChangeTo(StateType type)
+    {
+        return true;
+    }
+
 }
 

@@ -8,10 +8,14 @@ public class EntityStaticActor : BaseEntity
     public override void onCreate(EntityInfo data)
     {
         base.onCreate(data);
+        onCreateEnd();
+    }
+
+    public virtual void onCreateEnd()
+    {
         //创建姓名版 血条等..
         BillBoard = this.CacheObj.AddComponent<CrystalBillBoard>();
         BillBoard.onCreate(this.info);
-
     }
 
     public virtual void onEnter(BaseEntity entity)

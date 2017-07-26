@@ -14,7 +14,7 @@ public class PlayerIdleState : FSMState
         dyAgent = this.agent as EntityDynamicActor;
         words.Add("死亡如风 常伴吾身!");
         words.Add("钟鼓馔玉不足贵,但愿长醉不复醒!钟鼓馔玉不足贵,但愿长醉不复醒!");
-        words.Add("kiss my ass ! ! !");
+        words.Add("zzzzzzzzzzzz! ! !");
     }
 
     public override void onEnter()
@@ -37,7 +37,7 @@ public class PlayerIdleState : FSMState
             int index = UnityEngine.Random.Range(0, 3);
             if (dyAgent != null)
             {
-                dyAgent.sayWord(words[index]);
+                dyAgent.sayWord(words[index]);    
             }
         }
     }

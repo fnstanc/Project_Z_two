@@ -40,7 +40,7 @@ public class MainPlayerControl : BaseControl
         SceneMgr.Instance.onLoadScene("Test", (name) =>
         {
             EntityMgr.Instance.MainPlayerId = uid;
-            EntityMgr.Instance.createEntity<EntityMainPlayer>(tempid, uid, () =>
+            EntityMgr.Instance.createEntity<EntityMainPlayer>(tempid, uid, (entity) =>
             {
                 Message msg1 = new Message(MsgCmd.Open_MainPlayer_UI, this);
                 msg1.Send();

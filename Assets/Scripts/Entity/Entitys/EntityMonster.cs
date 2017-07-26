@@ -59,7 +59,14 @@ public class EntityMonster : EntityDynamicActor
 
     private void clear()
     {
-
+        //测试 死亡通知场景管理器或者服务器
+        for (int i = 0; i < 10; i++)
+        {
+            EntityMgr.Instance.createEntity<EntityDropCall>(2002, i + 100000, (drop) =>
+            {
+                drop.CacheTrans.position = MathUtils.getRandomPos(this);
+            });
+        }
     }
 
     public override void onReSpawn()
