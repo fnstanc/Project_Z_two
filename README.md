@@ -15,6 +15,8 @@
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/c3.gif) 
  desc:闪现(快速移动用来躲避技能或者突进敌人)
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/c4.gif) 
+ desc:物品掉落拾取(掉落物品为实体 飞行效果贝塞尔曲线)
+![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/d2.gif) 
 
 6:服务器
 desc:同步位置 技能释放(服务器写的很简单 https://github.com/tianjiuwan/Project_Server)
