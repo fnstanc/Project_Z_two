@@ -1,4 +1,4 @@
-![github]UI控件相关:
+UI控件相关:
 1.UGUI无限滚动列表2017.07.28(工程在https://github.com/tianjiuwan/Project_Server)
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/z2.gif) 
 
