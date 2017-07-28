@@ -2,7 +2,7 @@ UI控件相关:
 1.UGUI无限滚动列表2017.07.28(工程在https://github.com/tianjiuwan/Project_Server)
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/z2.gif) 
 
-UIshader效果相关:\n
+UIshader效果相关:
 1.UI效果：UI公共背景雨滴效果(UV流动 uv.x+=_Time.x),UI框体旋转(UV旋转 2维旋转矩阵)
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/uv1.gif) 
 2.UI效果：UI公共背景星空效果(UV呼吸 alpha随机渐变),UI缩放选中(UV 缩放 用tween动画也一样感觉shader更好 obj销毁tweener不kill容易报错)
