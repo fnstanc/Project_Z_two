@@ -11,8 +11,10 @@ UIshader效果相关:
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/uv4.gif) 
 4.UI效果：溶解效果(噪声图 取R 小于0clip)
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/a1.gif) 
+5.UI效果2017.07.29(刚才玩光明大陆发现物品进背包的动画效果还可以，自己写了一下，大概效果:物品缩放0->1 同时位移X 再移动到背包(曲线移动，用的贝塞尔曲线))
+![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/z3.gif) 
 
-5.战斗
+战斗相关
  desc:三段combo 位移缓存 浮空 击退  FSM状态里做的处理
 ![github](https://github.com/tianjiuwan/Project_Server/blob/master/Assets/GIF/c2.gif) 
  desc:实现亚索Q旋风接R大招(很搓)
